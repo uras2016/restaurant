@@ -15,9 +15,7 @@
 <table style="align-items:center">
     <tr>
         <th>Menu Name</th>
-        <th>Dish Name</th>
-        <%--<th>Position</th>--%>
-        <%--<th>Salary</th>--%>
+
     </tr>
     <c:forEach var="menu" items="${menus}" >
 

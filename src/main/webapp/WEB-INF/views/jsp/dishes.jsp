@@ -11,10 +11,13 @@
 
 </head>
 <body>
-
+<center>
 <table style="align-items:center">
     <tr>
-        <th>Dish Name</th>
+        <th>Блюдо</th>
+        <th>Цена</th>
+        <th>Вес</th>
+        <th>Мера</th>
         <%--<th>Dish Name</th>--%>
         <%--<th>Position</th>--%>
         <%--<th>Salary</th>--%>
@@ -23,7 +26,10 @@
 
         <tr>
             <td><a href="/dish?dishName=${dish.name}"> ${dish.name}</a></td>
-            <td>${dish.name}</td>
+            <%--<td>${dish.name}</td>--%>
+            <td>${dish.price}</td>
+            <td>${dish.weight}</td>
+            <td>${dish.measure}</td>
 
                 <%--<td>${employee.salary}</td>--%>
         </tr>
@@ -33,6 +39,6 @@
 </table>
 <a href="/">Go Home</a>
 <%--<a href="/">Short info</a>--%>
-
+</center>
 </body>
 </html>

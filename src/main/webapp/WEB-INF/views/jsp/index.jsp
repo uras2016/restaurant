@@ -38,6 +38,25 @@
             </div>
         </nav>
     </div>
+
+    <center>
+        <table style="align-items:center">
+            <td>
+                <span h2><a href="/schema" button type="submit" class="btn btn-success">Схема ресторана</a></span>
+                <h2>
+                    <span h2><a href="/contacts" button type="submit" class="btn btn-info">Контакты</a></span>
+                    <h2>
+                        <span h2><a href="/employees" button type="submit"
+                                    class="btn btn-primary">Наш персонал</a></span>
+                        <h2>
+
+            </td>
+        </table>
+    </center>
+
+    <%--</table>--%>
+    </center>
+
 </header>
 <section>
     <div class="container">
@@ -76,43 +95,45 @@
             <p align="JUSTIFY"></p></div>
     </div>
 </section>
-<section>
+
+
 <center>
     <h3 class="section_title">МЕНЮ</h3>
+
+    <p><a href="/menus">Список меню</a></p>
+
+
+</center>
+<center>
+    <table style="align-items:center">
+        <tr>
+            <th></th>
+
+        </tr>
+        <c:forEach var="menu" items="${menus}">
+
+            <tr>
+                <td><a href="/menu?menuName=${menu.name}"><p>${menu.name}</a></td>
+                </p>
+
+            </tr>
+
+        </c:forEach>
+
+    </table>
 </center>
 
-    <%--
-
-<table style="align-items:center">
-<tr>
-    <th>Меню</th>
-    <th>Блюдо</th>
-    &lt;%&ndash;<th>Position</th>&ndash;%&gt;
-    &lt;%&ndash;<th>Phone Number</th>&ndash;%&gt;
-    &lt;%&ndash;<th>Salary</th>&ndash;%&gt;
-</tr>
-<c:forEach var="menu" items="${menus}">
-    <tr>
-    <td><a href="/index?menuName=${menu.name}"> ${menu.name}</a></td>
-    <td>${menu.name}</td>
-    <td>${dish.surname}</td>
-    &lt;%&ndash;<td>${employee.position}</td>&ndash;%&gt;
-    &lt;%&ndash;<td>${employee.telephone}</td>&ndash;%&gt;
-    &lt;%&ndash;<td>${employee.salary}</td>&ndash;%&gt;
-    </tr>
-</c:forEach>
+<center>
+    <table style="align-items:center">
+        <td>
+            <a href="/dishes" button type="submit" class="btn-lg btn-danger">Show all dishes</a>
+            <a href="/ingredients" button type="submit" class="btn-lg btn-danger">Show all ingredients</a>
+            <a href="/employees" button type="submit" class="btn-lg btn-danger">Show all employees</a>
+        </td>
     </table>
---%>
+</center>
 
+<h3>Hello world. It's now: ${currentTime}</h3>
+</body>
 
-
-    <a href="/menus">Show all menus</a>
-    <a href="/dishes">Show all dishes</a>
-    <a href="/employees">Show all employees</a>
-
-
-    <h3>Hello world. It's now: ${currentTime}</h3>
-    </section>
-    </body>
-
-    </html>
+</html>

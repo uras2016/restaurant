@@ -26,7 +26,7 @@ public class DishController {
     @RequestMapping(value = "/dish", method = RequestMethod.GET)
     public ModelAndView dish(@RequestParam("dishName") String dishName) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("dish", dishService.getMenuByName(dishName)); // добав как в мапу
+        modelAndView.addObject("dish", dishService.getDishByName(dishName)); // добав как в мапу
         modelAndView.setViewName("dish"); // логическое имя модели
         return modelAndView;  // возвращаем JSP
     }

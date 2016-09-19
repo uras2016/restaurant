@@ -20,7 +20,7 @@ public class MenuController {
 
         model.put("menus", menuService.getMenus());
 
-        return "menus";  // возвращаем JSP
+        return "index";  // возвращаем JSP
     }
 
     @RequestMapping(value = "/menu", method = RequestMethod.GET)

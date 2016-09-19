@@ -16,7 +16,7 @@ public class DishService {
     }
 
     @Transactional
-    public Dish getMenuByName(String name) {
+    public Dish getDishByName(String name) {
         return dishDao.findByName(name);
     }
 

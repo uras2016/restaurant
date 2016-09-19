@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import ua.joit.java.spring.mvc.dao.EmployeeDao;
 import ua.joit.java.spring.mvc.model.Employee;
+import ua.joit.java.spring.mvc.model.Position;
 
 import java.util.List;
 
@@ -48,6 +49,19 @@ public class HEmployeeDao implements EmployeeDao {
     public List<Employee> findAll() {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("select e from Employee e").list();   // select* from employee
+
+    }
+    @Override
+    @Transactional
+    public List<Employee> findAllWaiters(Position position) {
+
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select e from Employee e where e.position like :position"); // :name - параметр, переданный в запрос
+        query.setParameter("position", position); // "name" должен совпадать с параметром в квери - :name
+        return query.getResultList();
+
+//        Session session = sessionFactory.getCurrentSession();
+//        return session.createQuery("select e from Employee e where e.position =WAITER").list();   // select* from employee
 
     }
 

@@ -1,5 +1,7 @@
 package ua.joit.java.spring.mvc.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -27,6 +29,7 @@ public class Dish {
 
 
     @ManyToMany(fetch = FetchType.EAGER)  // выбирает из БД все сразу
+    @Fetch(FetchMode.JOIN)
     @JoinTable(
             name = "dish_ingredients",
             joinColumns = @JoinColumn(name = "dish_id"),

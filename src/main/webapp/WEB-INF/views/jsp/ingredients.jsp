@@ -5,41 +5,32 @@
 <html>
 <head>
     <title>Title</title>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 </head>
 <body>
 <center>
 <table style="align-items:center">
     <tr>
-        <th>Название блюда</th>
-        <th>Цена</th>
-        <th>Вес</th>
-        <th>Мера</th>
-    </tr>
+        <th>Ингредиент</th>
 
-    <c:forEach var="dishes" items="${menu.dishes}" >
+    </tr>
+    <c:forEach var="ingredient" items="${ingredients}" >
 
         <tr>
-            <td><a href="/dish?dishName=${dishes.name}"> ${dishes.name}</a></td>
-            <%--<td>${dishes.name}</td>--%>
-            <td>${dishes.price}</td>
-            <td>${dishes.weight}</td>
-            <td>${dishes.measure}</td>
+            <%--<td><a href="/ingredient?ingredientName=${ingredient.name}"> ${ingredient.name}</a></td>--%>
+            <td>${ingredient.name}</td>
 
                 <%--<td>${employee.salary}</td>--%>
         </tr>
 
     </c:forEach>
-    <tr>
-        <%--<td>${menu.name}</td>--%>
-        <%--<td>${dish.name}</td>--%>
-
-    </tr>
 
 </table>
 <a href="/">Go Home</a>
-<a href="/menus">Show all menus</a>
+<%--<a href="/">Short info</a>--%>
 </center>
 </body>
 </html>

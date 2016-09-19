@@ -9,27 +9,23 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-
+<center>
 <table style="align-items:center">
+
     <tr>
-        <th>Название блюда</th>
-        <th>Цена</th>
-        <th>Вес</th>
-        <th>Мера</th>
+        <th>Ингредиент</th>
         <%--<th>Salary</th>--%>
     </tr>
-    <tr>
-        <td>${dish.name}</td>
-        <td>${dish.price}</td>
-        <td>${dish.weight}</td>
-        <td>${dish.measure}</td>
-        <%--<td>${employee.salary}</td>--%>
-    </tr>
+    <c:forEach var="ingredient" items="${dish.ingredients}">
+        <tr>
+            <td>${ingredient.name}</td>
 
+        </tr>
+    </c:forEach>
 </table>
 <a href="/">Go Home</a>
 <a href="/menus">Show all menus</a>
 <a href="/dishes">Show all dishes</a>
-
+</center>
 </body>
 </html>

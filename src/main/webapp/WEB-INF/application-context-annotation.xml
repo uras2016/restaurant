@@ -18,4 +18,7 @@
     <bean id="dishService" class="ua.joit.java.spring.mvc.service.DishService"/>
     <bean id="dishDao" class="ua.joit.java.spring.mvc.dao.hibernate.HDishDao"/>
 
+    <bean id="ingredientService" class="ua.joit.java.spring.mvc.service.IngredientService"/>
+    <bean id="ingredientDao" class="ua.joit.java.spring.mvc.dao.hibernate.HIngredientDao"/>
+
 </beans>

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import ua.joit.java.spring.mvc.dao.EmployeeDao;
 import ua.joit.java.spring.mvc.model.Employee;
+import ua.joit.java.spring.mvc.model.Position;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class EmployeeService {
 
     @Transactional
     public List<Employee> getEmployees(){
-        return employeeDao.findAll();
+        return employeeDao.findAllWaiters(Position.WAITER);
     }
 
     @Transactional
