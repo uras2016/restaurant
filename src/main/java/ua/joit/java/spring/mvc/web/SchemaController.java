@@ -9,7 +9,7 @@ public class SchemaController {
 
     @RequestMapping(value = "/schema", method = RequestMethod.GET)
     public String schema() {
-        return "/schema";
+        return "client-app/schema";
     }
 
 }

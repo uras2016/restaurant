@@ -21,14 +21,14 @@ public class EmployeeController {
 
         model.put("employees", employeeService.getEmployees());
 
-        return "employees";  // возвращаем JSP
+        return "client-app/employees";  // возвращаем JSP
     }
 
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
     public ModelAndView employee(@RequestParam("employeeName") String employeeName) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("employee", employeeService.getEmployeeByName(employeeName)); // добав как в мапу
-        modelAndView.setViewName("employee"); // логическое имя модели
+        modelAndView.setViewName("client-app/employee"); // логическое имя модели
         return modelAndView;  // возвращаем JSP
     }
 

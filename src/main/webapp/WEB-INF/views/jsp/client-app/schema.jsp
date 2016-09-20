@@ -13,7 +13,7 @@
 
             <td>
                 <h2>Схема</h2>
-                <img src="<c:url value="/resources/images/chema2.jpg"/>">
+                <img src="<c:url value="/resources/images/sch.jpg"/>">
             </td>
 
     </table>

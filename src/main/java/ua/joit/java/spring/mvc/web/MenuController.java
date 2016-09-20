@@ -20,14 +20,14 @@ public class MenuController {
 
         model.put("menus", menuService.getMenus());
 
-        return "index";  // возвращаем JSP
+        return "client-app/index";  // возвращаем JSP
     }
 
     @RequestMapping(value = "/menu", method = RequestMethod.GET)
     public ModelAndView menu(@RequestParam("menuName") String menuName) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("menu", menuService.getMenuByName(menuName)); // добав как в мапу
-        modelAndView.setViewName("menu"); // логическое имя модели
+        modelAndView.setViewName("client-app/menu"); // логическое имя модели
         return modelAndView;  // возвращаем JSP
     }
 

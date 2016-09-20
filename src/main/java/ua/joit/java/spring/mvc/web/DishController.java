@@ -20,14 +20,14 @@ public class DishController {
 
         model.put("dishes", dishService.getDishes());
 
-        return "dishes";  // возвращаем JSP
+        return "client-app/dishes";  // возвращаем JSP
     }
 
     @RequestMapping(value = "/dish", method = RequestMethod.GET)
     public ModelAndView dish(@RequestParam("dishName") String dishName) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("dish", dishService.getDishByName(dishName)); // добав как в мапу
-        modelAndView.setViewName("dish"); // логическое имя модели
+        modelAndView.setViewName("client-app/dish"); // логическое имя модели
         return modelAndView;  // возвращаем JSP
     }
 

@@ -8,24 +8,32 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <div style="margin-left: 20px">
+        <table style="width: 100%">
+            <center>
 
+            <td>
+                <h2>Наш персонал</h2>
+                <img src="<c:url value="/resources/images/personal.jpg"/>">
+            </td>
+            </center>
+
+        </table>
+
+    </div>
 </head>
 <body>
 <center>
 <table style="align-items:center">
     <tr>
-        <th>First Name</th>
-        <%--<th>Last Name</th>--%>
-        <th>Position</th>
-        <%--<th>Salary</th>--%>
+        <th>Имя официанта</th>
     </tr>
     <c:forEach var="employee" items="${employees}" >
 
         <tr>
             <td><a href="/employee?employeeName=${employee.name}"> ${employee.name}</a></td>
-            <%--<td>${employee.surname}</td>--%>
-            <%--<td>${employee.position}</td>--%>
-                <%--<td>${employee.salary}</td>--%>
+
+
         </tr>
 
     </c:forEach>

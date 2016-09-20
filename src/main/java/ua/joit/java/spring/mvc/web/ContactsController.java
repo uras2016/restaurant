@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ContactsController {
     @RequestMapping(value = "/contacts", method = RequestMethod.GET)
     public String contacts() {
-        return "/contacts";
+        return "client-app/contacts";
     }
 }

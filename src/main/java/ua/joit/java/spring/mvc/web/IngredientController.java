@@ -20,14 +20,14 @@ public class IngredientController {
 
         model.put("ingredients", ingredientService.getIngredients());
 
-        return "ingredients";  // возвращаем JSP
+        return "client-app/ingredients";  // возвращаем JSP
     }
 
     @RequestMapping(value = "/ingredient", method = RequestMethod.GET)
     public ModelAndView ingredient(@RequestParam("ingredientName") String ingredientName) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("ingredient", ingredientService.getIngredientByName(ingredientName)); // добав как в мапу
-        modelAndView.setViewName("ingredient"); // логическое имя модели
+        modelAndView.setViewName("client-app/ingredient"); // логическое имя модели
         return modelAndView;  // возвращаем JSP
     }
 

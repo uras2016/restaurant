@@ -4,6 +4,18 @@
 
 <html class="no-js" lang="ru">
 <head>
+    <div style="margin-left: 15px">
+        <table style="width: 100%">
+            <tr style="vertical-align:top">
+                <td>
+                    <center>
+                        <img src="<c:url value="/resources/images/finsalad2.jpg"/>">
+
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </div>
     <title>О компании</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -11,6 +23,7 @@
 
 </head>
 <body class="about">
+
 <header class="header">
     <%--<button class="menu_trigger">Меню</button>--%>
     <div class="container">
@@ -39,25 +52,17 @@
         </nav>
     </div>
 
-    <center>
-        <table style="align-items:center">
-            <td>
-                <span h2><a href="/schema" button type="submit" class="btn btn-success">Схема ресторана</a></span>
-                <h2>
-                    <span h2><a href="/contacts" button type="submit" class="btn btn-info">Контакты</a></span>
-                    <h2>
-                        <span h2><a href="/employees" button type="submit"
-                                    class="btn btn-primary">Наш персонал</a></span>
-                        <h2>
 
-            </td>
-        </table>
-    </center>
-
-    <%--</table>--%>
-    </center>
+        <div style="position:absolute; top:450px; left:500px;"><a href="/schema" button type="submit" class="btn btn-primary">Схема ресторана</a></div>
+        <div style="position:absolute; top:450px; left:650px;"><a href="/contacts" button type="submit" class="btn btn-primary">Контакты</a></div>
+        <div style="position:absolute; top:450px; left:750px;"><a href="/employees" button type="submit" class="btn btn-primary">Наш персонал</a></div>
+        <div style="position:absolute; top:450px; left:1000px;"><a href="/admin" button type="submit" class="btn btn-success">Администрирование</a></div>
 
 </header>
+
+
+<%--</div>--%>
+
 <section>
     <div class="container">
         <h2 class="section_title">О компании</h2>
@@ -126,14 +131,14 @@
 <center>
     <table style="align-items:center">
         <td>
-            <a href="/dishes" button type="submit" class="btn-lg btn-danger">Show all dishes</a>
-            <a href="/ingredients" button type="submit" class="btn-lg btn-danger">Show all ingredients</a>
-            <a href="/employees" button type="submit" class="btn-lg btn-danger">Show all employees</a>
+            <a href="/dishes" button type="submit" class="btn-lg btn-danger">Все блюда</a>
+            <a href="/ingredients" button type="submit" class="btn-lg btn-danger">Все ингредиенты</a>
+            <a href="/employees" button type="submit" class="btn-lg btn-danger">Все сотрудники</a>
         </td>
     </table>
 </center>
 
-<h3>Hello world. It's now: ${currentTime}</h3>
+<h4>Hello world. It's now: ${currentTime}</h4>
 </body>
 
 </html>
