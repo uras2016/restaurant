@@ -19,6 +19,10 @@ public class DishService {
     public Dish getDishByName(String name) {
         return dishDao.findByName(name);
     }
+    @Transactional
+    public Dish findByName(String name) {
+        return dishDao.findByName(name);
+    }
 
     @Autowired
     public void setDishDao(DishDao dishDao) {

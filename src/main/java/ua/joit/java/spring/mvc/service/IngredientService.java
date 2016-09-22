@@ -9,6 +9,14 @@ import java.util.List;
 
 public class IngredientService {
     private IngredientDao ingredientDao;
+    @Transactional
+    public void addIngredient(Ingredient ingredient){
+        ingredientDao.addIngredient(ingredient);
+    }
+    @Transactional
+    public void removeIngredient(Ingredient ingredient){
+        ingredientDao.removeIngredient(ingredient);
+    }
 
     @Transactional
     public List<Ingredient> getIngredients() {
@@ -19,11 +27,27 @@ public class IngredientService {
     public Ingredient getIngredientByName(String name) {
         return ingredientDao.findByName(name);
     }
+    @Transactional
+    public Ingredient findById(Long id) {
+        return ingredientDao.findById(id);
+    }
+
+
+
+
+
+
+
+
+
+
 
     @Autowired
     public void setIngredientDao(IngredientDao ingredientDao) {
         this.ingredientDao = ingredientDao;
     }
+
+
 
 }
 

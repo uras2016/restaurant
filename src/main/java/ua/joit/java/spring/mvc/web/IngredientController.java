@@ -23,6 +23,14 @@ public class IngredientController {
         return "client-app/ingredients";  // возвращаем JSP
     }
 
+    @RequestMapping(value = "/ingredients/edit", method = RequestMethod.GET) // link to JSP
+    public String ingredientAll(Map<String, Object> model) {
+
+        model.put("ingredientsE", ingredientService.getIngredients());
+
+        return "client-app/ingredientsEdit";  // возвращаем JSP
+    }
+
     @RequestMapping(value = "/ingredient", method = RequestMethod.GET)
     public ModelAndView ingredient(@RequestParam("ingredientName") String ingredientName) {
         ModelAndView modelAndView = new ModelAndView();
@@ -30,6 +38,11 @@ public class IngredientController {
         modelAndView.setViewName("client-app/ingredient"); // логическое имя модели
         return modelAndView;  // возвращаем JSP
     }
+
+
+
+
+
 
     @Autowired
     public void setIngredientService(IngredientService ingredientService) {

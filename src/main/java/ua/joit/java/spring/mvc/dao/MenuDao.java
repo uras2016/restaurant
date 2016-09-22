@@ -10,6 +10,9 @@ public interface MenuDao {
     void add(Menu menu);
     void remove(Menu menu);
     void addDish(Dish dish, Menu menu/*List<Dish>*/);
+
+    Menu getById(Long id);
+
     void deleteDish(Dish dish, Menu menu/*TODO:List<Dish>*/);
     Menu getByName(String name);
     List<Menu> findAll();

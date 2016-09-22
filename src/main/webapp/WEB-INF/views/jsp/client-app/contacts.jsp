@@ -48,5 +48,6 @@
     </table>
 
 </div>
+<a href="/">Go Home</a>
 </body>
 </html>

@@ -109,24 +109,7 @@
 
 
 </center>
-<center>
-    <table style="align-items:center">
-        <tr>
-            <th></th>
 
-        </tr>
-        <c:forEach var="menu" items="${menus}">
-
-            <tr>
-                <td><a href="/menu?menuName=${menu.name}"><p>${menu.name}</a></td>
-                </p>
-
-            </tr>
-
-        </c:forEach>
-
-    </table>
-</center>
 
 <center>
     <table style="align-items:center">

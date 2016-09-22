@@ -33,7 +33,18 @@ public class HMenuDao implements MenuDao{
         if (!menu.getDishes().contains(dish)){
             menu.getDishes().add(dish);
             sessionFactory.getCurrentSession().saveOrUpdate(menu);
+        }else {
+            throw new RuntimeException("This dish is already included");
         }
+    }
+    @Override
+    @Transactional
+    public Menu getById(Long id) {
+        Menu result = sessionFactory.getCurrentSession().get(Menu.class, id);
+        if(result==null) {
+            throw new RuntimeException("Wrong id = " + id);
+        }
+        return result;
     }
 
     @Override

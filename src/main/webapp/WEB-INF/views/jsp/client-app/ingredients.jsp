@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 
 <html>
@@ -23,7 +24,10 @@
             <%--<td><a href="/ingredient?ingredientName=${ingredient.name}"> ${ingredient.name}</a></td>--%>
             <td>${ingredient.name}</td>
 
-                <%--<td>${employee.salary}</td>--%>
+                <%--<td>--%>
+                    <%--<a href="edit?id=${ingredient.id}">Edit</a>--%>
+                    <%--<a href="delete?id=${ingredient.id}">Delete</a>--%>
+                <%--</td>--%>
         </tr>
 
     </c:forEach>

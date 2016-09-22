@@ -35,7 +35,17 @@ public class Menu {
     )
     private List<Dish> dishes;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public boolean isNew() {
+        return (this.id == null);
+    }
 
     public String getName() {
         return name;

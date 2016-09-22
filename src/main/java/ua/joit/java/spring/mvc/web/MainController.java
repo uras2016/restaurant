@@ -13,7 +13,7 @@ public class MainController {
     @RequestMapping(value = "/", method = RequestMethod.GET)        //редирект риквеста на этот метод
     public String index(Map<String, Object> model){   // имя обьекта + сам обьект
         model.put("currentTime", new Date().toString()); // currentTime - название, по которому будем запускать
-        return "client-app/index";                         // будет возвращать первую страничку приложения
+        return "index";                         // будет возвращать первую страничку приложения
     }
 
 

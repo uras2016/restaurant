@@ -40,6 +40,15 @@ public class HIngredientDao implements IngredientDao{
     }
 
     @Override
+    @Transactional
+    public Ingredient findById(Long id) {
+        Ingredient result = sessionFactory.getCurrentSession().get(Ingredient.class, id);
+        if (result == null) {
+            throw new RuntimeException("Wrong id = " + id);
+        }
+        return result;
+    }
+    @Override
     public void removeAllIngredients() {
         sessionFactory.getCurrentSession().createQuery("delete from Ingredient").executeUpdate();
     }
