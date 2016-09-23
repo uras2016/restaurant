@@ -1,6 +1,7 @@
 <%@ page session="false"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -8,27 +9,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<jsp:include page="../menu/header.jsp" />
+<jsp:include page="../fragments/header.jsp" />
 
 <body>
 
-<div style="width: 50%; margin-left: 20px">
+<div style="width: 35%; margin-left: 30px">
 
-    <%--<c:if test="${not empty msg}">--%>
-        <%--<div class="alert alert-${css} alert-dismissible" role="alert">--%>
-            <%--<button type="button" class="close" data-dismiss="alert" aria-label="Close">--%>
-                <%--<span aria-hidden="true">&times;</span>--%>
-            <%--</button>--%>
-            <%--<strong>${msg}</strong>--%>
-        <%--</div>--%>
-    <%--</c:if>--%>
 
     <h1>Все меню</h1>
 
 
 
         <table border="0.2" style="align-items: center" class="table table-striped">
-            <thead style = "color:white;background-color:grey">
+            <thead style = "color:white;background-color:#2e6da4">
         <tr>
             <th>Название меню</th>
             <th></th>

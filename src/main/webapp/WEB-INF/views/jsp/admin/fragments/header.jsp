@@ -18,7 +18,7 @@
 <spring:url value="/" var="urlHome" />
 
 
-<nav class="navbar navbar-inverse ">
+<nav class="navbar navbar-static-top">
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="${urlHome}">Главная</a>

@@ -20,7 +20,7 @@ public class IngredientController {
 
         model.put("ingredients", ingredientService.getIngredients());
 
-        return "client-app/ingredients";  // возвращаем JSP
+        return "client-app/ingredient/ingredients";  // возвращаем JSP
     }
 
     @RequestMapping(value = "/ingredients/edit", method = RequestMethod.GET) // link to JSP
@@ -28,14 +28,14 @@ public class IngredientController {
 
         model.put("ingredientsE", ingredientService.getIngredients());
 
-        return "client-app/ingredientsEdit";  // возвращаем JSP
+        return "client-app/ingredient/ingredientsEdit";  // возвращаем JSP
     }
 
     @RequestMapping(value = "/ingredient", method = RequestMethod.GET)
     public ModelAndView ingredient(@RequestParam("ingredientName") String ingredientName) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("ingredient", ingredientService.getIngredientByName(ingredientName)); // добав как в мапу
-        modelAndView.setViewName("client-app/ingredient"); // логическое имя модели
+        modelAndView.setViewName("client-app/ingredient/ingredient"); // логическое имя модели
         return modelAndView;  // возвращаем JSP
     }
 

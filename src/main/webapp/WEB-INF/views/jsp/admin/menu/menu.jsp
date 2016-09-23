@@ -1,6 +1,7 @@
 <%@ page session="false"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -9,20 +10,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<jsp:include page="../menu/header.jsp" />
+<jsp:include page="../fragments/header.jsp" />
 
-<body>
-<h1>Меню ${menu.name}</h1>
+<div>
+<div style="width: 35%; margin-left: 30px">
+<h2>Меню ${menu.name}</h2>
 
-<table border="1" style="align-items: center" class="table table-striped">
-    <thead style = "color:white;background-color:grey">
+<table border="3" style="align-items: center" class="table table-view">
+    <thead style = "color:white;background-color:#2e6da4">
     <tr>
         <th>Название блюда</th>
         <th>Категория</th>
         <th>Цена</th>
         <th>Вес</th>
         <th>Мера</th>
-        <th></th>
+        <th>Опция</th>
 
     </tr>
     </thead>
@@ -35,9 +37,9 @@
             <td>${dish.price}</td>
             <td>${dish.weight}</td>
             <td>${dish.measure}</td>
-            <td style="align-items: center; width: 20px">
+            <td style="align-items: center; width: 1px">
                 <spring:url value="/admin/menus/${menu.id}/deleteDish/${dish.id}" var="deleteDishFromMenuUrl"/>
-                <a href="${deleteDishFromMenuUrl}"></a>
+                <a href="${deleteDishFromMenuUrl}">Delete</a>
             </td>
         </tr>
     </c:forEach>
@@ -70,7 +72,7 @@
 </form:form>
 
 
-
+</div>
 </body>
 <p><a href="/admin/menus">Go to menu list</a></p>
 </html>

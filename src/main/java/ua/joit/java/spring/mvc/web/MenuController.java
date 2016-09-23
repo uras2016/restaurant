@@ -13,6 +13,7 @@ import ua.joit.java.spring.mvc.service.DishService;
 import ua.joit.java.spring.mvc.service.MenuService;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -142,6 +143,36 @@ public class MenuController {
         model.addAttribute("menuForm", menu);
         return "/admin/menu/form";
     }
+
+
+    @RequestMapping(value = "/admin/menus/{id}/addDish", method = RequestMethod.POST)
+    public String addDishToMenu(@PathVariable("id") Long id, @ModelAttribute("dish") Dish dish) {
+        String dishName = dish.getName();
+        Dish actualDish = dishService.findByName(dishName);
+        Menu menu = menuService.getById(id);
+        menu.getDishes().add(actualDish);
+        menuService.add(menu);
+
+        System.out.println(menu.toString());
+
+        return "redirect:/admin/menus/menu/" + menu.getId();
+    }
+
+    @RequestMapping(value = "/admin/menus/{menuId}/deleteDish/{dishId}", method = RequestMethod.GET)
+    public String deleteDishFromOrder(@PathVariable("menuId") Long menuId, @PathVariable("dishId") Long dishId) {
+        Menu menu = menuService.getById(menuId);
+        List<Dish> dishes = menu.getDishes();
+        Iterator<Dish> iterator = dishes.iterator();
+        while (iterator.hasNext()) {
+            Dish dish = iterator.next();
+            if(dish.getId()==dishId) {
+                iterator.remove();
+            }
+        }
+        menuService.add(menu);
+        return "redirect:/admin/menus/menu/" + menu.getId();
+    }
+
     @Autowired
     public void setDishService(DishService dishService) {
         this.dishService = dishService;
