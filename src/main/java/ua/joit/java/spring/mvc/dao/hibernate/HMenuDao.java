@@ -18,7 +18,7 @@ public class HMenuDao implements MenuDao{
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void add(Menu menu) {
-        sessionFactory.getCurrentSession().save(menu);
+        sessionFactory.getCurrentSession().saveOrUpdate(menu);
     }
 
     @Override
@@ -40,12 +40,26 @@ public class HMenuDao implements MenuDao{
     @Override
     @Transactional
     public Menu getById(Long id) {
-        Menu result = sessionFactory.getCurrentSession().get(Menu.class, id);
-        if(result==null) {
-            throw new RuntimeException("Wrong id = " + id);
+        Query query = sessionFactory.getCurrentSession().createQuery("select m from Menu m where m.id = :id");
+        query.setParameter("id", id);
+        Menu result = (Menu) query.uniqueResult();
+        if (result == null) {
+            throw new RuntimeException("Menu was not fount by id = " + id);
         }
         return result;
     }
+
+
+
+
+//    @Transactional
+//    public Menu getById(Long id) {
+//        Menu result = sessionFactory.getCurrentSession().get(Menu.class, id);
+//        if(result==null) {
+//            throw new RuntimeException("Wrong id = " + id);
+//        }
+//        return result;
+//    }
 
     @Override
     @Transactional

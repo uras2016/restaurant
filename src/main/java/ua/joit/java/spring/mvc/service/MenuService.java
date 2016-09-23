@@ -33,6 +33,10 @@ public class MenuService {
     @Transactional
     public Menu getByName(String name) {return menuDao.getByName(name);}
     @Transactional
+    public Menu getById(Long id) {
+        return menuDao.getById(id);
+    }
+    @Transactional
     public void addDishToMenu(Dish dish, Menu menu) {menuDao.addDish(dish,menu);}
     @Transactional
     public void deleteDishFromMenu(Dish dish, Menu menu) {

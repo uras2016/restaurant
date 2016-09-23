@@ -38,7 +38,7 @@ public class MenuController {
         return "client-app/menu/menus";  // возвращаем JSP
     }
 
-    @RequestMapping(value = "/menus/edit", method = RequestMethod.GET) // link to JSP
+    /*@RequestMapping(value = "/menus/edit", method = RequestMethod.GET) // link to JSP
     public String menusAll(Map<String, Object> model) {
 
         model.put("menusE", menuService.getMenus());
@@ -77,24 +77,48 @@ public class MenuController {
 
         modelAndView.setViewName("admin/menu/old/show");
         return modelAndView;
-    }
+    }*/
 //-------------------------------------------------
 
-    @RequestMapping(value = "/admin/menus", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/menus", method = RequestMethod.GET) // show all
     public String showAllUsers(Model model) {
         model.addAttribute("menus", menuService.getMenus());
         return "admin/menu/menus";
 
     }
-    @RequestMapping(value = "/admin/menus", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/menus", method = RequestMethod.POST) // add menu
     public String saveOrUpdateMenu(@ModelAttribute("menuForm") @Validated Menu menu, BindingResult result){
         if(result.hasErrors()) {
-            return "admin/menu/form";
+            return "/admin/menu/form";
         }
         menuService.add(menu);
 
         return "redirect:/admin/menus";
     }
+    @RequestMapping(value = "/admin/menus/menu/{id}", method = RequestMethod.GET)
+    public ModelAndView Menu(@PathVariable Long id) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        Menu menu = menuService.getById(id);
+        modelAndView.addObject("menu", menu);
+
+        List<Dish> dishList = menu.getDishes();
+
+        modelAndView.addObject("dishList", dishList);
+
+        modelAndView.addObject("dish", new Dish());
+
+
+        Map<Dish, String> dishNameList = new HashMap<>();
+        for (Dish dish: dishService.getDishes()){
+            dishNameList.put(dish, dish.getName());
+        }
+        modelAndView.addObject("dishNameList", dishNameList);
+
+        modelAndView.setViewName("/admin/menu/menu");
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/admin/menus/add", method = RequestMethod.GET)
     public String showAddMenuForm(Model model) {
 
@@ -106,7 +130,18 @@ public class MenuController {
 
     }
 
+    @RequestMapping(value = "/admin/menus/{id}/delete", method = RequestMethod.GET)
+    public String deleteMenu(@PathVariable("id") Long id){
+        menuService.remove(menuService.getById(id));
+        return "redirect:/admin/menus";
+    }
 
+    @RequestMapping(value = "/admin/menus/{id}/update", method = RequestMethod.GET)
+    public String updateMenu(@PathVariable Long id, Model model) {
+        Menu menu = menuService.getById(id);
+        model.addAttribute("menuForm", menu);
+        return "/admin/menu/form";
+    }
     @Autowired
     public void setDishService(DishService dishService) {
         this.dishService = dishService;

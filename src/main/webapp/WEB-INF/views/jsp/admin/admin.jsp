@@ -1,48 +1,61 @@
+<%@ page session="false"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <html>
+<jsp:include page="../admin/fragments/header.jsp" />
+
 <head>
     <title>Admin page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-<td>
 
-    <table style="align-items:center">
+<div style="width: 50%; margin-left: 20px">
+
+
+    <h1>Выберите раздел</h1>
+
+    <table border="0.2" style="align-items: center" class="table table-striped">
+        <%--<thead style = "color:white;background-color:grey">--%>
+        <%--<tr>--%>
+            <%--<th>Название раздела</th>--%>
+            <%--<th></th>--%>
+            <%--<th></th>--%>
+        <%--</tr>--%>
+        <%--</thead>--%>
+
         <tr>
-            <th>Опции</th>
-        </tr>
+            <p><col style="align-items: center; width: 20px">
+            <a href="/admin/menus" button type="submit"
+                   class="btn btn-primary">Изменения в меню</a></p>
+            <p><col style="align-items: center; width: 20px">
+                <a href="/dishes" button type="submit"
+                   class="btn btn-primary">Все блюда</a></p>
+            <col style="align-items: center; width: 20px">
+                <a href="/employees" button type="submit"
+                   class="btn btn-primary">Персонал</a></p>
+            <col style="align-items: center; width: 20px">
+                <a href="/store" button type="submit"
+                   class="btn btn-primary">Склад</a></p>
+            <col style="align-items: center; width: 20px">
+                <a href="/history" button type="submit"
+                   class="btn btn-primary">История заказов</a><p>
+            <col style="align-items: center; width: 20px">
+                <a href="/ingredients/edit" button type="submit"
+                   class="btn btn-primary">Изменение ингредиентов</a></col>
+            </tr>
+        </table>
 
 
-                 <div style="position:absolute; top:100px; left:50px;"><a href="/admin/menus" button type="submit"
-                                                                 class="btn btn-primary">Изменения в меню</a>
-                 </div>
-
-                <div style="position:absolute; top:100px; left:210px;"><a href="/dishes" button type="submit"
-                                                                          class="btn btn-primary">Все блюда</a></div>
-
-                <div style="position:absolute; top:100px; left:310px;"><a href="/employees" button type="submit"
-                                                                          class="btn btn-primary">Персонал</a></div>
-
-                <div style="position:absolute; top:100px; left:425px;"><a href="/store" button type="submit"
-                                                                          class="btn btn-primary">Склад</a>
-                </div>
-
-                <div style="position:absolute; top:100px; left:500px;"><a href="/history" button type="submit"
-                                                                  class="btn btn-primary">История заказов</a>
-                </div>
-
-                <div style="position:absolute; top:100px; left:700px;"><a href="/ingredients/edit" button type="submit"
-                                                                  class="btn btn-primary">Изменение ингредиентов</a>
-                </div>
-
-
-        </tr>
-    </table>
-
+</div>
     <a href="/">Go Home</a>
+    <jsp:include page="../admin/fragments/footer.jsp" />
+
 </body>
 </html>

@@ -12,48 +12,59 @@
 
 <body>
 
-<div class="container">
+<div style="width: 50%; margin-left: 20px">
 
-    <c:if test="${not empty msg}">
-        <div class="alert alert-${css} alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <strong>${msg}</strong>
-        </div>
-    </c:if>
+    <%--<c:if test="${not empty msg}">--%>
+        <%--<div class="alert alert-${css} alert-dismissible" role="alert">--%>
+            <%--<button type="button" class="close" data-dismiss="alert" aria-label="Close">--%>
+                <%--<span aria-hidden="true">&times;</span>--%>
+            <%--</button>--%>
+            <%--<strong>${msg}</strong>--%>
+        <%--</div>--%>
+    <%--</c:if>--%>
 
     <h1>Все меню</h1>
 
-    <table class="table table-striped">
-        <thead>
+
+
+        <table border="0.2" style="align-items: center" class="table table-striped">
+            <thead style = "color:white;background-color:grey">
         <tr>
             <th>Название меню</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
 
         <c:forEach var="menu" items="${menus}">
             <tr>
-                <td>${menu.name}</td>
-                <td><c:forEach var="dish" items="${menu.dishes}" varStatus="loop">
-                    ${framework}
-                    <c:if test="${not loop.last}">,</c:if>
-                </c:forEach></td>
-                <td>
-                    <spring:url value="/admin/menus/${menu.name}" var="userUrl" />
-                    <spring:url value="/admin/menus/${menu.name}/delete" var="deleteUrl" />
-                    <spring:url value="/admin/menus${menu.name}/update" var="updateUrl" />
+                <td><a href="/admin/menus/menu/${menu.id}">${menu.name}</a></td>
 
-                    <button class="btn btn-info" onclick="location.href='${userUrl}'">Query</button>
-                    <button class="btn btn-primary" onclick="location.href='${updateUrl}'">Update</button>
-                    <button class="btn btn-danger" onclick="this.disabled=true;post('${deleteUrl}')">Delete</button></td>
+                <td style="align-items: center; width: 20px">
+                    <spring:url value="/admin/menus/${menu.id}/delete" var="deleteUrl"/>
+                    <a href="${deleteUrl}">Delete</a>
+                </td>
+                <td style="align-items: center; width: 20px">
+                    <spring:url value="/admin/menus/${menu.id}/update" var="updateUrl"/>
+                    <a href="${updateUrl}">Edit</a>
+
+                </td>
             </tr>
+
         </c:forEach>
+
     </table>
+        <spring:url value="/admin/menus/add" var="addUrl" />
+        <button class="btn btn-primary" onclick="location.href='${addUrl}'">Добавить меню</button>
+        <br>
+        <br>
 
 </div>
+<p><a href="/admin">Go to options</a></p>
 
 <jsp:include page="../fragments/footer.jsp" />
 
 </body>
+
+
 </html>

@@ -13,17 +13,17 @@
 </head>
 
 <spring:url value="/" var="urlHome" />
-<spring:url value="/admin/menus/add" var="urlAddMenu" />
+<%--<spring:url value="/admin/menus/add" var="urlAddMenu" />--%>
 
 <nav class="navbar navbar-inverse ">
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="${urlHome}">Главная</a>
         </div>
-        <div id="navbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="${urlAddMenu}">Добавить меню</a></li>
-            </ul>
-        </div>
+        <%--<div id="navbar">--%>
+            <%--<ul class="nav navbar-nav navbar-right">--%>
+                <%--<li class="active"><a href="${urlAddMenu}">Добавить меню</a></li>--%>
+            <%--</ul>--%>
+        <%--</div>--%>
     </div>
 </nav>
