@@ -112,7 +112,7 @@ public String showAllDishes(Model model) {
         dish.getIngredients().add(actualIngredient);
         dishService.save(dish);
 
-//        System.out.println(menu.toString());
+        System.out.println(dish.toString());
 
         return "redirect:/admin/dishes/dish/" + dish.getId();
     }

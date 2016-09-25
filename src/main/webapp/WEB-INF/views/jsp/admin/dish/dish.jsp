@@ -30,7 +30,7 @@
                     <td>${ingredient.name}</td>
 
                     <td style="align-items: center; width: 1px">
-                        <spring:url value="/admin/dishes/${dish.id}/deleteDish/${ingredient.id}"
+                        <spring:url value="/admin/dishes/${dish.id}/deleteIngredient/${ingredient.id}"
                                     var="deleteIngredientFromDishUrl"/>
                         <a href="${deleteIngredientFromDishUrl}">Delete</a>
                     </td>
@@ -46,9 +46,9 @@
     <br>
 
 
-    <spring:url value="/admin/dishes/${dish.id}/addDish" var="menuActionUrl"/>
+    <spring:url value="/admin/dishes/${dish.id}/addIngredient" var="dishActionUrl"/>
 
-    <form:form action="${menuActionUrl}" modelAttribute="ingredient" method="post">
+    <form:form action="${dishActionUrl}" modelAttribute="ingredient" method="post">
 
         <spring:bind path="ingredient">
             <label class="col-sm-2 control-label"><h4>Выберите ингредиент</h4></label>

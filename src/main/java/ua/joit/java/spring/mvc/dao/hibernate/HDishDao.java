@@ -44,7 +44,7 @@ public class HDishDao implements DishDao{
 
     @Override
     public Dish getById(Long id) {
-        Query query = sessionFactory.getCurrentSession().createQuery("select m from Dish m where m.id = :id");
+        Query query = sessionFactory.getCurrentSession().createQuery("select d from Dish d where d.id = :id");
         query.setParameter("id", id);
         Dish result = (Dish) query.uniqueResult();
         if (result == null) {
