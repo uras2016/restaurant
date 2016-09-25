@@ -26,12 +26,12 @@
         <tr>
             <p><col style="align-items: center; width: 20px">
             <a href="/admin/menus" button type="submit"
-                   class="btn btn-primary">Изменения в меню</a></p>
+                   class="btn btn-primary">Меню</a></p>
             <p><col style="align-items: center; width: 20px">
                 <a href="/admin/dishes" button type="submit"
-                   class="btn btn-primary">Все блюда</a></p>
+                   class="btn btn-primary">Блюда</a></p>
             <col style="align-items: center; width: 20px">
-                <a href="/employees" button type="submit"
+                <a href="/admin/employees" button type="submit"
                    class="btn btn-primary">Персонал</a></p>
             <col style="align-items: center; width: 20px">
                 <a href="/store" button type="submit"

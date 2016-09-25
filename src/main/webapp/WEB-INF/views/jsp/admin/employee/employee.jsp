@@ -1,0 +1,52 @@
+<%@ page session="false" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<jsp:include page="../fragments/header.jsp"/>
+
+<div>
+    <div style="width: 35%; margin-left: 30px">
+        <h2>${employee.name}</h2> <h2>${employee.surname}</h2>
+
+        <table border="3" style="align-items: center" class="table table-view">
+            <thead style="color:white;background-color:#2e6da4">
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Должность</th>
+                <th>Телефон</th>
+                <th>Оклад</th>
+
+            </tr>
+            </thead>
+
+
+            <tr>
+                <td>${employee.name}</td>
+                <td>${employee.surname}</td>
+                <td>${employee.position}</td>
+                <td>${employee.telephone}</td>
+                <td>${employee.salary}</td>
+            </tr>
+        </table>
+
+    </div>
+    <hr>
+    <br>
+    <br>
+    <br>
+
+
+
+
+</div>
+</body>
+<p><a href="/admin/dishes">Go to dish list</a></p>
+</html>

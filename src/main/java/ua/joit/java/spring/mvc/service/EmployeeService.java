@@ -13,13 +13,18 @@ public class EmployeeService {
     private EmployeeDao employeeDao;
 
     @Transactional
-    public List<Employee> getEmployees(){
+    public List<Employee> getEmployees() {
         return employeeDao.findAllWaiters(Position.WAITER);
     }
 
     @Transactional
-    public Employee getEmployeeByName(String name){
+    public Employee getEmployeeByName(String name) {
         return employeeDao.findByName(name);
+    }
+
+    @Transactional
+    public Employee getById(Long id) {
+        return employeeDao.getById(id);
     }
 
     @Autowired

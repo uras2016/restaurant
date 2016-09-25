@@ -27,12 +27,13 @@
 <table style="align-items:center">
     <tr>
         <th>Имя официанта</th>
+        <th>Позиция</th>
     </tr>
     <c:forEach var="employee" items="${employees}" >
 
         <tr>
             <td><a href="/employee?employeeName=${employee.name}"> ${employee.name}</a></td>
-
+            <td>${employee.position}</td>
 
         </tr>
 

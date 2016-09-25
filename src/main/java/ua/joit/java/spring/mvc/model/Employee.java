@@ -30,6 +30,10 @@ public class Employee {
     private String birthday;
 
 
+
+    public boolean isNew() {
+        return (this.id == null);
+    }
     public Long getId() {
         return id;
     }

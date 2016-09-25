@@ -6,6 +6,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import ua.joit.java.spring.mvc.dao.EmployeeDao;
+import ua.joit.java.spring.mvc.model.Dish;
 import ua.joit.java.spring.mvc.model.Employee;
 import ua.joit.java.spring.mvc.model.Position;
 
@@ -63,6 +64,18 @@ public class HEmployeeDao implements EmployeeDao {
 //        Session session = sessionFactory.getCurrentSession();
 //        return session.createQuery("select e from Employee e where e.position =WAITER").list();   // select* from employee
 
+    }
+
+    @Override
+    @Transactional
+    public Employee getById(Long id) {
+        Query query = sessionFactory.getCurrentSession().createQuery("select e from Employee e where e.id = :id");
+        query.setParameter("id", id);
+        Employee result = (Employee) query.uniqueResult();
+        if (result == null) {
+            throw new RuntimeException("Employee was not fount by id = " + id);
+        }
+        return result;
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {

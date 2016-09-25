@@ -15,6 +15,8 @@ public interface EmployeeDao {
 
     void removeAllEmployees();
 
-        Employee load(Long id);
+    Employee getById(Long id);
+
+    Employee load(Long id);
 
 }
