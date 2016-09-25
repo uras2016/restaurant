@@ -37,8 +37,8 @@
                 <a href="/admin/store" button type="submit"
                    class="btn btn-primary">Склад</a></p>
             <col style="align-items: center; width: 20px">
-                <a href="/history" button type="submit"
-                   class="btn btn-primary">История заказов</a><p>
+                <a href="/admin/orders" button type="submit"
+                   class="btn btn-primary">Заказы</a><p>
             <col style="align-items: center; width: 20px">
                 <a href="/admin/ingredients" button type="submit"
                    class="btn btn-primary">Ингредиенты</a></col>
