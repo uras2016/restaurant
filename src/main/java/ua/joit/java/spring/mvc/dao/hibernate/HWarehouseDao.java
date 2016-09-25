@@ -5,6 +5,8 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import ua.joit.java.spring.mvc.dao.WarehouseDao;
+import ua.joit.java.spring.mvc.model.Employee;
+import ua.joit.java.spring.mvc.model.Ingredient;
 import ua.joit.java.spring.mvc.model.Warehouse;
 
 import java.util.List;
@@ -19,7 +21,7 @@ public class HWarehouseDao implements WarehouseDao {
     @Transactional
     public void create(Warehouse warehouse) {
         if (!findAll().contains(warehouse))
-        sessionFactory.getCurrentSession().save(warehouse);
+        sessionFactory.getCurrentSession().merge(warehouse);
     }
 
     @Override
@@ -44,6 +46,17 @@ public class HWarehouseDao implements WarehouseDao {
         Query query = sessionFactory.getCurrentSession().createQuery("select w from Warehouse w where w.ingredient.name = :name");
         query.setParameter("name", name);
         return (Warehouse) query.uniqueResult();
+    }
+    @Override
+    @Transactional
+    public Warehouse getById(Long id) {
+        Query query = sessionFactory.getCurrentSession().createQuery("select w from Warehouse w where w.id = :id");
+        query.setParameter("id", id);
+        Warehouse result = (Warehouse) query.uniqueResult();
+        if (result == null) {
+            throw new RuntimeException("Ingredient was not fount by id = " + id);
+        }
+        return result;
     }
 
     @Override

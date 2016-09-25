@@ -10,6 +10,9 @@ public interface WarehouseDao {
     void remove(Warehouse warehouse);
     void changeQuantityOfIngredients(String ingredientName, Float quantity);
     Warehouse findByName(String name);
+
+    public Warehouse getById(Long id);
+
     List<Warehouse> findAll();
     List<Warehouse> findEndsIngredients();
 

@@ -15,7 +15,7 @@ public class Warehouse {
     private Long id;
 
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "ingredient")
     private Ingredient ingredient;
 
@@ -27,6 +27,9 @@ public class Warehouse {
     private Measures measure;
 
 
+    public boolean isNew() {
+        return (this.id == null);
+    }
     public Long getId() {
         return id;
     }

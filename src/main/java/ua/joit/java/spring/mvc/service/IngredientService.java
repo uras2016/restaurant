@@ -8,6 +8,7 @@ import ua.joit.java.spring.mvc.model.Ingredient;
 import java.util.List;
 
 public class IngredientService {
+
     private IngredientDao ingredientDao;
     @Transactional
     public void addIngredient(Ingredient ingredient){
@@ -31,14 +32,6 @@ public class IngredientService {
     public Ingredient findById(Long id) {
         return ingredientDao.findById(id);
     }
-
-
-
-
-
-
-
-
 
 
 

@@ -34,14 +34,14 @@
                 <a href="/admin/employees" button type="submit"
                    class="btn btn-primary">Персонал</a></p>
             <col style="align-items: center; width: 20px">
-                <a href="/store" button type="submit"
+                <a href="/admin/store" button type="submit"
                    class="btn btn-primary">Склад</a></p>
             <col style="align-items: center; width: 20px">
                 <a href="/history" button type="submit"
                    class="btn btn-primary">История заказов</a><p>
             <col style="align-items: center; width: 20px">
-                <a href="/ingredients/edit" button type="submit"
-                   class="btn btn-primary">Изменение ингредиентов</a></col>
+                <a href="/admin/ingredients" button type="submit"
+                   class="btn btn-primary">Ингредиенты</a></col>
             </tr>
         </table>
 

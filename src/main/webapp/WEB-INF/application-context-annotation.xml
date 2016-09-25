@@ -21,4 +21,7 @@
     <bean id="ingredientService" class="ua.joit.java.spring.mvc.service.IngredientService"/>
     <bean id="ingredientDao" class="ua.joit.java.spring.mvc.dao.hibernate.HIngredientDao"/>
 
+    <bean id="warehouseService" class="ua.joit.java.spring.mvc.service.WarehouseService"/>
+    <bean id="warehouseDao" class="ua.joit.java.spring.mvc.dao.hibernate.HWarehouseDao"/>
+
 </beans>

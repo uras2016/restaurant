@@ -17,6 +17,9 @@ public class Ingredient {
     @Column(name = "name")
     private String name;
 
+    public boolean isNew() {
+        return (this.id == null);
+    }
     public Long getId() {
         return id;
     }

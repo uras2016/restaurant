@@ -16,7 +16,7 @@ public class HIngredientDao implements IngredientDao{
     @Override
     @Transactional
     public void addIngredient(Ingredient ingredient) {
-       sessionFactory.getCurrentSession().save(ingredient);
+       sessionFactory.getCurrentSession().saveOrUpdate(ingredient);
     }
 
     @Override
