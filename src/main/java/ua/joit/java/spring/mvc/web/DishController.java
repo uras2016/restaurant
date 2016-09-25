@@ -49,7 +49,7 @@ public String showAllDishes(Model model) {
     @RequestMapping(value = "/admin/dishes", method = RequestMethod.POST) // add menu
     public String saveOrUpdateDish(@ModelAttribute("dishForm") @Validated Dish dish, BindingResult result){
         if(result.hasErrors()) {
-            return "/admin/dish/form";
+            return "admin/employee/form";
         }
         dishService.save(dish);
 
@@ -63,7 +63,7 @@ public String showAllDishes(Model model) {
 
         model.addAttribute("dishForm", dish);
 
-        return "admin/dish/form";
+        return "admin/employee/form";
 
     }
 
@@ -101,7 +101,7 @@ public String showAllDishes(Model model) {
     public String updateDish(@PathVariable Long id, Model model) {
         Dish dish = dishService.getById(id);
         model.addAttribute("dishForm", dish);
-        return "/admin/dish/form";
+        return "admin/employee/form";
     }
 
     @RequestMapping(value = "/admin/dishes/{id}/addIngredient", method = RequestMethod.POST)

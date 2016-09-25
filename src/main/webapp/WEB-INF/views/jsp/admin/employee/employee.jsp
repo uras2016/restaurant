@@ -48,5 +48,5 @@
 
 </div>
 </body>
-<p><a href="/admin/dishes">Go to dish list</a></p>
+<p><a href="/admin/employees">Go to employee list</a></p>
 </html>

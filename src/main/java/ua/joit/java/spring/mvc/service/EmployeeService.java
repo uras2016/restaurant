@@ -13,10 +13,14 @@ public class EmployeeService {
     private EmployeeDao employeeDao;
 
     @Transactional
-    public List<Employee> getEmployees() {
+    public List<Employee> getWaiters() {
         return employeeDao.findAllWaiters(Position.WAITER);
     }
 
+    @Transactional
+    public List<Employee> getEmployees() {
+        return employeeDao.findAll();
+    }
     @Transactional
     public Employee getEmployeeByName(String name) {
         return employeeDao.findByName(name);
@@ -25,6 +29,14 @@ public class EmployeeService {
     @Transactional
     public Employee getById(Long id) {
         return employeeDao.getById(id);
+    }
+    @Transactional
+    public void save(Employee employee) {
+        employeeDao.save(employee);
+    }
+    @Transactional
+    public void remove(Employee employee) {
+        employeeDao.remove(employee);
     }
 
     @Autowired

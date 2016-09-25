@@ -14,24 +14,24 @@
 <div class="container">
 
     <c:choose>
-        <c:when test="${dishForm['new']}">
-            <h1>Добавить новое блюдо</h1>
+        <c:when test="${employeeForm['new']}">
+            <h1>Добавить нового сотрудника</h1>
         </c:when>
         <c:otherwise>
-            <h1>Изменить блюдо</h1>
+            <h1>Изменить данные</h1>
         </c:otherwise>
     </c:choose>
     <br />
 
-    <spring:url value="/admin/dishes" var="dishActionUrl"/>
+    <spring:url value="/admin/employees" var="employeeActionUrl"/>
 
-    <form:form class="form-horizontal" method="post" modelAttribute="dishForm" action="${dishActionUrl}">
+    <form:form class="form-horizontal" method="post" modelAttribute="employeeForm" action="${employeeActionUrl}">
 
         <form:hidden path="id" />
 
         <spring:bind path="name">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <label class="col-sm-2 control-label">Название</label>
+                <label class="col-sm-2 control-label">Имя</label>
                 <div class="col-sm-10">
                     <form:input path="name" type="text" class="form-control " id="name" placeholder="Name" required="required"/>
                     <form:errors path="name" class="control-label" />
@@ -39,52 +39,61 @@
             </div>
         </spring:bind>
 
-        <spring:bind path="category">
+        <spring:bind path="surname">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <label class="col-sm-2 control-label">Категория</label>
+                <label class="col-sm-2 control-label">Фамилия</label>
                 <div class="col-sm-10">
-                    <form:input path="category" type="text" class="form-control " id="category" placeholder="Category" required="required"/>
-                    <form:errors path="category" class="control-label" />
+                    <form:input path="surname" type="text" class="form-control " id="surname" placeholder="Surname" required="required"/>
+                    <form:errors path="surname" class="control-label" />
                 </div>
             </div>
         </spring:bind>
 
-        <spring:bind path="price">
+        <spring:bind path="telephone">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <label class="col-sm-2 control-label">Цена</label>
+                <label class="col-sm-2 control-label">Телефон</label>
                 <div class="col-sm-10">
-                    <form:input path="price" type="text" class="form-control " id="price" placeholder="Price" required="required"/>
-                    <form:errors path="price" class="control-label" />
+                    <form:input path="telephone" type="text" class="form-control " id="telephone" placeholder="Phone number" required="required"/>
+                    <form:errors path="telephone" class="control-label" />
                 </div>
             </div>
         </spring:bind>
 
-        <spring:bind path="weight">
+        <spring:bind path="position">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <label class="col-sm-2 control-label">Вес</label>
+                <label class="col-sm-2 control-label">Должность</label>
                 <div class="col-sm-10">
-                    <form:input path="weight" type="text" class="form-control " id="weight" placeholder="Weight" required="required"/>
-                    <form:errors path="weight" class="control-label" />
+                    <form:input path="position" type="text" class="form-control " id="Position" placeholder="Position, CAPITAL letters" required="required"/>
+                    <form:errors path="position" class="control-label" />
                 </div>
             </div>
         </spring:bind>
 
 
-        <spring:bind path="measure">
+        <spring:bind path="salary">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <label class="col-sm-2 control-label">Мера</label>
+                <label class="col-sm-2 control-label">Оклад</label>
                 <div class="col-sm-10">
-                    <form:input path="measure" type="text" class="form-control " id="measure" placeholder="Measure" required="required"/>
-                    <form:errors path="measure" class="control-label" />
+                    <form:input path="salary" type="text" class="form-control " id="salary" placeholder="Salary" required="required"/>
+                    <form:errors path="salary" class="control-label" />
                 </div>
             </div>
         </spring:bind>
 
+        <spring:bind path="birthday">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <label class="col-sm-2 control-label">ДР</label>
+                <div class="col-sm-10">
+                    <form:input path="birthday" type="text" class="form-control " id="birthday" placeholder="Birthday" required="required"/>
+                    <form:errors path="birthday" class="control-label" />
+                </div>
+            </div>
+        </spring:bind>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
-                    <c:when test="${dishForm['new']}">
+                    <c:when test="${employeeForm['new']}">
                         <button type="submit" class="btn-lg btn-primary pull-right">Добавить</button>
                     </c:when>
                     <c:otherwise>

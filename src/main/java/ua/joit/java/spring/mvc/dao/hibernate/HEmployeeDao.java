@@ -20,7 +20,7 @@ public class HEmployeeDao implements EmployeeDao {
     @Transactional
     public void save(Employee employee) {
         Session session = sessionFactory.getCurrentSession();
-        session.save(employee);
+        session.saveOrUpdate(employee);
     }
 
     @Override
