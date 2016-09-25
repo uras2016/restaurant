@@ -22,20 +22,13 @@
     <h1>Выберите раздел</h1>
 
     <table border="0.2" style="align-items: center" class="table table-striped">
-        <%--<thead style = "color:white;background-color:grey">--%>
-        <%--<tr>--%>
-            <%--<th>Название раздела</th>--%>
-            <%--<th></th>--%>
-            <%--<th></th>--%>
-        <%--</tr>--%>
-        <%--</thead>--%>
 
         <tr>
             <p><col style="align-items: center; width: 20px">
             <a href="/admin/menus" button type="submit"
                    class="btn btn-primary">Изменения в меню</a></p>
             <p><col style="align-items: center; width: 20px">
-                <a href="/dishes" button type="submit"
+                <a href="/admin/dishes" button type="submit"
                    class="btn btn-primary">Все блюда</a></p>
             <col style="align-items: center; width: 20px">
                 <a href="/employees" button type="submit"

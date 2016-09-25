@@ -39,6 +39,10 @@ public class Dish {
     private List<Ingredient> ingredients;
 
 
+    public boolean isNew() {
+        return (this.id == null);
+    }
+
     public Long getId() {
         return id;
     }

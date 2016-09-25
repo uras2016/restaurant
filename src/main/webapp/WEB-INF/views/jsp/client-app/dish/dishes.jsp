@@ -18,9 +18,7 @@
         <th>Цена</th>
         <th>Вес</th>
         <th>Мера</th>
-        <%--<th>Dish Name</th>--%>
-        <%--<th>Position</th>--%>
-        <%--<th>Salary</th>--%>
+
     </tr>
     <c:forEach var="dish" items="${dishes}" >
 

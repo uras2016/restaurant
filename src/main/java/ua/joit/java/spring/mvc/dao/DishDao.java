@@ -13,4 +13,6 @@ public interface DishDao {
     Dish findByName(String name);
 
     void removeAllDishes();
+
+    Dish getById(Long id);
 }

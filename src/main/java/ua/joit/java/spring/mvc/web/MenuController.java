@@ -39,46 +39,6 @@ public class MenuController {
         return "client-app/menu/menus";  // возвращаем JSP
     }
 
-    /*@RequestMapping(value = "/menus/edit", method = RequestMethod.GET) // link to JSP
-    public String menusAll(Map<String, Object> model) {
-
-        model.put("menusE", menuService.getMenus());
-
-        return "admin/menu/old/menusEdit";  // возвращаем JSP
-    }
-
-    @RequestMapping(value = "menus/forEdit", method = RequestMethod.GET)
-    public String showAddUserForm(Model model){
-        Menu menu = new Menu();
-        model.addAttribute("menus", menuService.getMenus());
-
-        return "admin/menu/old/forEdit";
-    }
-
-
-
-    @RequestMapping(value = "/menus/show/{menuName}", method = RequestMethod.GET)
-    public ModelAndView showMenu(@PathVariable String menuName) {
-        ModelAndView modelAndView = new ModelAndView();
-
-        Menu menu = menuService.getMenuByName(menuName);
-        modelAndView.addObject("menu", menu);
-
-        List<Dish> dishList = menu.getDishes();
-        modelAndView.addObject("dishList", dishList);
-
-        modelAndView.addObject("dish", new Dish());
-
-
-        Map<Dish, String> dishNameList = new HashMap<>();
-        for (Dish dish: dishService.getDishes()){
-            dishNameList.put(dish, dish.getName());
-        }
-        modelAndView.addObject("dishNameList", dishNameList);
-
-        modelAndView.setViewName("admin/menu/old/show");
-        return modelAndView;
-    }*/
 //-------------------------------------------------
 
     @RequestMapping(value = "/admin/menus", method = RequestMethod.GET) // show all

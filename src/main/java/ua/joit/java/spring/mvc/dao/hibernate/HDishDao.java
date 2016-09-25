@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ua.joit.java.spring.mvc.dao.DishDao;
 import ua.joit.java.spring.mvc.model.Dish;
+import ua.joit.java.spring.mvc.model.Menu;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class HDishDao implements DishDao{
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public void save(Dish dish) {
-        sessionFactory.getCurrentSession().save(dish);
+        sessionFactory.getCurrentSession().saveOrUpdate(dish);
     }
 
     @Override
@@ -39,6 +40,17 @@ public class HDishDao implements DishDao{
     public void removeAllDishes() {
 
         sessionFactory.getCurrentSession().createQuery("delete from Dish").executeUpdate();
+    }
+
+    @Override
+    public Dish getById(Long id) {
+        Query query = sessionFactory.getCurrentSession().createQuery("select m from Dish m where m.id = :id");
+        query.setParameter("id", id);
+        Dish result = (Dish) query.uniqueResult();
+        if (result == null) {
+            throw new RuntimeException("Dish was not fount by id = " + id);
+        }
+        return result;
     }
 
     @Override
