@@ -15,6 +15,12 @@ public class OrderService {
     public List<Orders> findAllOrders() {
         return orderDao.findAllOrders();
     }
+
+    @Transactional
+    public Orders getById(Long id) {
+        return orderDao.findById(id);
+    }
+
     @Autowired
     public void setOrderDao(OrderDao orderDao) {
         this.orderDao = orderDao;

@@ -3,6 +3,7 @@ package ua.joit.java.spring.mvc.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +38,16 @@ public class DishController {
         model.put("dishes", dishService.getDishes());
 
         return "client-app/dish/dishes";  // возвращаем JSP
+    }
+    @RequestMapping(value = "/dishes/find", method = RequestMethod.GET)
+    public String finfByName(@RequestParam("name") String name, ModelMap modelMap) {
+        if (name==null || name=="") {
+            return "redirect:/";
+        } else {
+            Dish dish = dishService.findByName(name);
+            modelMap.addAttribute("dish", dish);
+            return "/client-app/dish/findByName";
+        }
     }
 
 //    ------------------------------------

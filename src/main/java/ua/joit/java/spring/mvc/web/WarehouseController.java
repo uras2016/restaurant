@@ -6,10 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import ua.joit.java.spring.mvc.model.Ingredient;
 import ua.joit.java.spring.mvc.model.Measures;
 import ua.joit.java.spring.mvc.model.Warehouse;
@@ -79,6 +76,16 @@ public class WarehouseController {
         return ingredients;
     }
 
+    @RequestMapping(value = "/admin/store/find", method = RequestMethod.GET)
+    public String finfByName(@RequestParam("name") String name, ModelMap modelMap) {
+        if (name==null || name=="") {
+            return "redirect:/admin/store";
+        } else {
+            Warehouse warehouse = warehouseService.findByName(name);
+            modelMap.addAttribute("warehouse", warehouse);
+            return "/admin/warehouse/findByName";
+        }
+    }
 
     @Autowired
     public void setIngredientService(IngredientService ingredientService) {

@@ -25,7 +25,10 @@ public class WarehouseService {
     public Warehouse getById(Long id) {
         return warehouseDao.getById(id);
     }
-
+    @Transactional
+    public Warehouse findByName(String name) {
+        return warehouseDao.findByName(name);
+    }
 
     @Transactional
     public void remove(Warehouse warehouse) {

@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ua.joit.java.spring.mvc.dao.OrderDao;
 import ua.joit.java.spring.mvc.model.Dish;
+import ua.joit.java.spring.mvc.model.Menu;
 import ua.joit.java.spring.mvc.model.Orders;
 import ua.joit.java.spring.mvc.model.PreparedDish;
 
@@ -42,6 +43,19 @@ public class HOrderDao implements OrderDao {
         return (Orders) query.uniqueResult();
     }
 
+    @Transactional
+    public Orders getById(Long id) {
+        Query query = sessionFactory.getCurrentSession().createQuery("select o from Orders o where o.id = :id");
+        query.setParameter("id", id);
+        Orders result = (Orders) query.uniqueResult();
+        if (result == null) {
+            throw new RuntimeException("Order was not fount by id = " + id);
+        }
+        return result;
+    }
+
+
+
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void addDishToOrder(Dish dish, Orders orders) {
@@ -50,6 +64,7 @@ public class HOrderDao implements OrderDao {
             sessionFactory.getCurrentSession().saveOrUpdate(orders);
         }
     }
+
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)

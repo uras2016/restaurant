@@ -11,7 +11,7 @@
 
 </head>
 <body>
-
+<center>
 <table style="align-items:center">
     <tr>
         <th>Menu Name</th>
@@ -30,6 +30,8 @@
 
 </table>
 <a href="/">Go Home</a>
+</center>
+
 <%--<a href="/">Short info</a>--%>
 
 </body>

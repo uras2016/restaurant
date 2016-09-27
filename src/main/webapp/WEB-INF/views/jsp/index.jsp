@@ -1,5 +1,9 @@
+<%@ page session="false"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <html class="no-js" lang="ru">
@@ -109,6 +113,23 @@
 
 
 </center>
+
+<div style="text-align: left">
+    <spring:url value="/find" var="indexActionUrl"/>
+    <form:form class="form-horizontal" method="get" action="${indexActionUrl}">
+        <div class="container">
+            <div class="row">
+                    <%-- <h4>  Search by name</h4>--%>
+                <div class="search">
+                        <%--<form:input path="searchingName" type="text" class="form-control input-sm" id="searchingName" placeholder="Search" />--%>
+                    <input type="text" class="form-control input-sm" name="name" placeholder="Введите название"/>
+                    <button type="submit" class="btnn btn-primary btn-sm">Поиск</button>
+                </div>
+            </div>
+        </div>
+    </form:form>
+</div>
+</td>
 
 
 <center>
