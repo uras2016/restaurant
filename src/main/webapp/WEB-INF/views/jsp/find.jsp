@@ -10,9 +10,7 @@
 
 <div style="width: 50%; margin-left: 20px">
 
-    <%--<br>--%>
-    <%--<br>--%>
-    <%--<hr>--%>
+
     <h2 style="text-align: center; color: #23527c">Блюдо</h2>
     <br>
 
@@ -20,9 +18,7 @@
     <form:form class="form-horizontal" method="get" action="${indexActionUrl}">
         <div class="container">
             <div class="row">
-                    <%-- <h4>  Search by name</h4>--%>
                 <div class="search">
-                        <%--<form:input path="searchingName" type="text" class="form-control input-sm" id="searchingName" placeholder="Search" />--%>
                     <input type="text" class="form-control input-sm" name="name" placeholder="Введите название"/>
                     <button type="submit" class="btnn btn-primary btn-sm">Поиск</button>
                 </div>
@@ -31,7 +27,7 @@
     </form:form>
 
     <table border="0.2" style="align-items: center" class="table table-striped">
-        <thead style = "color:white;background-color:dimgrey">
+        <thead style="color:white;background-color:dimgrey">
         <tr>
             <th>Блюдо</th>
             <th>Категория</th>

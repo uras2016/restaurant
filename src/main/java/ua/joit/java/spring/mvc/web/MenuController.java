@@ -12,10 +12,7 @@ import ua.joit.java.spring.mvc.model.Menu;
 import ua.joit.java.spring.mvc.service.DishService;
 import ua.joit.java.spring.mvc.service.MenuService;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class MenuController {
@@ -47,15 +44,17 @@ public class MenuController {
         return "admin/menu/menus";
 
     }
+
     @RequestMapping(value = "/admin/menus", method = RequestMethod.POST) // add menu
-    public String saveOrUpdateMenu(@ModelAttribute("menuForm") @Validated Menu menu, BindingResult result){
-        if(result.hasErrors()) {
+    public String saveOrUpdateMenu(@ModelAttribute("menuForm") @Validated Menu menu, BindingResult result) {
+        if (result.hasErrors()) {
             return "/admin/menu/form";
         }
         menuService.add(menu);
 
         return "redirect:/admin/menus";
     }
+
     @RequestMapping(value = "/admin/menus/menu/{id}", method = RequestMethod.GET)
     public ModelAndView Menu(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView();
@@ -71,7 +70,7 @@ public class MenuController {
 
 
         Map<Dish, String> dishNameList = new HashMap<>();
-        for (Dish dish: dishService.getDishes()){
+        for (Dish dish : dishService.getDishes()) {
             dishNameList.put(dish, dish.getName());
         }
         modelAndView.addObject("dishNameList", dishNameList);
@@ -92,7 +91,7 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/admin/menus/{id}/delete", method = RequestMethod.GET)
-    public String deleteMenu(@PathVariable("id") Long id){
+    public String deleteMenu(@PathVariable("id") Long id) {
         menuService.remove(menuService.getById(id));
         return "redirect:/admin/menus";
     }
@@ -125,12 +124,21 @@ public class MenuController {
         Iterator<Dish> iterator = dishes.iterator();
         while (iterator.hasNext()) {
             Dish dish = iterator.next();
-            if(dish.getId()==dishId) {
+            if (dish.getId() == dishId) {
                 iterator.remove();
             }
         }
         menuService.add(menu);
         return "redirect:/admin/menus/menu/" + menu.getId();
+    }
+
+
+    @RequestMapping(value = "/", method = RequestMethod.GET) // show all
+    public String showAllm(Model model) {
+        model.addAttribute("menus", menuService.getMenus());
+        model.addAttribute("currentTime", new Date().toString());
+        return "index";
+
     }
 
     @Autowired

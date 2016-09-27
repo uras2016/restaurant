@@ -11,23 +11,20 @@ import org.springframework.web.servlet.ModelAndView;
 import ua.joit.java.spring.mvc.model.Dish;
 import ua.joit.java.spring.mvc.service.DishService;
 
-import java.util.Date;
-import java.util.Map;
-
 @Controller/*(value = "/")*/
 public class MainController {
 
     private DishService dishService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)        //редирект риквеста на этот метод
-    public String index(Map<String, Object> model){   // имя обьекта + сам обьект
-        model.put("currentTime", new Date().toString()); // currentTime - название, по которому будем запускать
-        return "index";                         // будет возвращать первую страничку приложения
-    }
+//    @RequestMapping(value = "/", method = RequestMethod.GET)        //редирект риквеста на этот метод
+//    public String index(Map<String, Object> model){   // имя обьекта + сам обьект
+//        model.put("currentTime", new Date().toString()); // currentTime - название, по которому будем запускать
+//        return "index";                         // будет возвращать первую страничку приложения
+//    }
 
     @RequestMapping(value = "/find", method = RequestMethod.GET)
     public String searchByName(@RequestParam("name") String name, ModelMap modelMap) {
-        if (name==null || name=="") {
+        if (name == null || name == "") {
             return "redirect:/";
         } else {
             Dish dish = dishService.findByName(name);
@@ -47,6 +44,7 @@ public class MainController {
         modelAndView.setViewName("/dish");
         return modelAndView;
     }
+
 
     @Autowired
     public void setDishService(DishService dishService) {

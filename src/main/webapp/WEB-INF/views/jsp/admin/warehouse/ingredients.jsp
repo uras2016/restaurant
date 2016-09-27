@@ -43,7 +43,12 @@
 <jsp:include page="../fragments/header.jsp" />
 
 <body>
-
+<script type="text/javascript">
+    <!--
+    initial_sort_id = 0;
+    initial_sort_up = 1;
+    -->
+</script>
 <div style="width: 35%; margin-left: 30px">
 
 

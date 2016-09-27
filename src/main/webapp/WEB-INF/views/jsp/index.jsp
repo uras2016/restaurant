@@ -1,8 +1,8 @@
-<%@ page session="false"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="false" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
@@ -14,7 +14,6 @@
                 <td>
                     <center>
                         <img src="<c:url value="/resources/images/finsalad2.jpg"/>">
-
                     </center>
                 </td>
             </tr>
@@ -29,22 +28,21 @@
 <body class="about">
 
 <header class="header">
-    <%--<button class="menu_trigger">Меню</button>--%>
     <div class="container">
         <div class="clearfix">
             <div class="h_left">
                 <center>
-                    <h1>РЕСТОРАН "КРЯ-КРЯ"</h1>
+                    <h1>РЕСТОРАН "ТОчКА"</h1>
                 </center>
                 <a class="h_phone" href="tel:+38099495988">+ 38 099 888 90 09</a>
-                <span class="h_phone-info">Единый телефон ресторана "Кря-Кря"</span>
+                <span class="h_phone-info">Единый телефон ресторана "ТОчКА"</span>
             </div>
             <div class="h_right">
                 <div class="h_lang"><a href="about.html">RU</a> / <a
                         href="http://translate.google.com/translate?sl=ru&tl=en&u=http://rappoport.restaurant/about.html">EN</a>
                 </div>
 
-                <a class="h_email" href="mailto:info@krya-krya.restaurant">info@krya-krya.restaurant</a>
+                <a class="h_email" href="mailto:info@krya-krya.restaurant">info@tochka.restaurant</a>
             </div>
         </div>
         <nav>
@@ -57,21 +55,22 @@
     </div>
 
 
-        <div style="position:absolute; top:450px; left:500px;"><a href="/schema" button type="submit" class="btn btn-primary">Схема ресторана</a></div>
-        <div style="position:absolute; top:450px; left:650px;"><a href="/contacts" button type="submit" class="btn btn-primary">Контакты</a></div>
-        <div style="position:absolute; top:450px; left:750px;"><a href="/employees" button type="submit" class="btn btn-primary">Наш персонал</a></div>
-        <div style="position:absolute; top:450px; left:1000px;"><a href="/admin" button type="submit" class="btn btn-success">Администрирование</a></div>
+    <div style="position:absolute; top:450px; left:500px;"><a href="/schema" button type="submit"
+                                                              class="btn btn-primary">Схема ресторана</a></div>
+    <div style="position:absolute; top:450px; left:650px;"><a href="/contacts" button type="submit"
+                                                              class="btn btn-primary">Контакты</a></div>
+    <div style="position:absolute; top:450px; left:750px;"><a href="/employees" button type="submit"
+                                                              class="btn btn-primary">Наш персонал</a></div>
+    <div style="position:absolute; top:450px; left:1000px;"><a href="/admin" button type="submit"
+                                                               class="btn btn-success">Администрирование</a></div>
 
 </header>
 
 
-<%--</div>--%>
-
 <section>
     <div class="container">
         <h2 class="section_title">О компании</h2>
-        <%--<div class="banner" style="background-image: url(/WEB-INF/images/IMG_2214.jpg)"></div>--%>
-        <p class="section_introtext">ОБЪЕДИНЕННАЯ КОМПАНИЯ «РЕСТОРАНЫ КРЯ-КРЯ» - АКТИВНО РАЗВИВАЮЩИЙСЯ РЕСТОРАННЫЙ
+        <p class="section_introtext">ОБЪЕДИНЕННАЯ КОМПАНИЯ «РЕСТОРАНЫ ТОчКА» - АКТИВНО РАЗВИВАЮЩИЙСЯ РЕСТОРАННЫЙ
             ХОЛДИНГ. ЗА КОРОТКИЙ СРОК, С 2014 ПО 2015 ГОД, КОМПАНИЯ ОТКРЫЛА 12 РЕСТОРАНОВ. КАЖДЫЙ ВЫДЕЛЯЕТСЯ УНИКАЛЬНОЙ
             КОНЦЕПЦИЕЙ И ОБЛАДАЕТ СОБСТВЕННОЙ ЦЕЛЕВОЙ АУДИТОРИЕЙ.</p>
         <div class="content-text">
@@ -89,27 +88,45 @@
             <p align="JUSTIFY">ЗА ДВА ГОДА РАБОТЫ, ХОЛДИНГ ЗАВОЕВАЛ БОЛЕЕ 10-ТИ ПРОФЕССИОНАЛЬНЫХ НАГРАД. РЕСТОРАНЫ
                 КОМПАНИИ НЕОДНОКРАТНО ОТМЕЧАЛИСЬ В РЕЙТИНГАХ ПРОФИЛЬНЫХ СМИ, КАК ЛУЧШИЕ НОВЫЕ ЗАВЕДЕНИЯ. А В 2014 ГОДУ
                 РЕСТОРАТОРОМ ГОДА ПО ВЕРСИИ ЖУРНАЛА «<span lang="en-US" xml:lang="en-US">GQ</span>» БЫЛ ПРИЗНАН
-                ОСНОВАТЕЛЬ КОМПАНИИ, АЛЕКСАНДР КРЯ.</p>
-            <p align="JUSTIFY">АЛЕКСАНДР КРЯ - ИЗВЕСТНЫЙ ТЮРКСКИЙ АДВОКАТ И РЕСТОРАТОР, КОТОРЫЙ ВСЕГО ЗА НЕСКОЛЬКО ЛЕТ
+                ОСНОВАТЕЛЬ КОМПАНИИ, АЛЕКСАНДР ТОЧКА.</p>
+            <p align="JUSTIFY">АЛЕКСАНДР ТОЧКА - ИЗВЕСТНЫЙ ТЮРКСКИЙ АДВОКАТ И РЕСТОРАТОР, КОТОРЫЙ ВСЕГО ЗА НЕСКОЛЬКО ЛЕТ
                 СУМЕЛ ПРЕВРАТИТЬ СВОЕ УВЛЕЧЕНИЕ В УСПЕШНЫЙ БИЗНЕС И ПОСТРОИТЬ НАСТОЯЩУЮ РЕСТОРАННУЮ ИМПЕРИЮ. ОН НАЧИНАЛ
                 КАК КРИЗИС-МЕНЕДЖЕР, ПО ПРОСЬБЕ ВЛАДЕЛЬЦЕВ ВОЗВРАЩАЮЩИЙ ПОПУЛЯРНОСТЬ УЖЕ СУЩЕСТВУЮЩИМ РЕСТОРАНАМ.
                 ТАКОВЫМ БЫЛ СОВМЕСТНЫЙ С АЛЕКСАНДРОМ МАМУТОМ ПРОЕКТ «BRASSERIE МОСТ», А ТАКЖЕ ПАРТНЕРСТВО С АРКАДИЕМ
                 НОВИКОВЫМ В «МЯСНОМ КЛУБЕ» - ОБА БЫСТРО ЗАВОЕВАЛИ УСПЕХ У ТЮРКСКОЙ ПУБЛИКИ.</p>
             <p align="JUSTIFY">В 2014 ГОДУ РЕСТОРАТОР ЗАПУСТИЛ ПЕРВЫЙ СОБСТВЕННЫЙ ПРОЕКТ - ЗНАМЕНИТЫЙ РЕСТОРАН
                 КАНТОНСКОЙ КУХНИ «КИТАЙСКАЯ ГРАМОТА», А УЖЕ ЧЕРЕЗ 2 ГОДА РЕСТОРАНОВ СТАЛО 12.</p>
-            <p align="JUSTIFY">И ХОТЯ АЛЕКСАНДР КРЯ ПО-ПРЕЖНЕМУ СЧИТАЕТ АДВОКАТСКУЮ ДЕЯТЕЛЬНОСТЬ ОСНОВНОЙ, ЕМУ УДАЕТСЯ
+            <p align="JUSTIFY">И ХОТЯ АЛЕКСАНДР ТОЧКА ПО-ПРЕЖНЕМУ СЧИТАЕТ АДВОКАТСКУЮ ДЕЯТЕЛЬНОСТЬ ОСНОВНОЙ, ЕМУ УДАЕТСЯ
                 ЗАДАВАТЬ ТРЕНДЫ ДЛЯ ТЮРКСКОГО РЕСТОРАННОГО БИЗНЕСА В ЦЕЛОМ.</p>
             <p align="JUSTIFY">ПРОДУМАННЫЙ ДИЗАЙН, БЕЗУПРЕЧНАЯ КУХНЯ, ВЫСОКИЙ УРОВЕНЬ СЕРВИСА, ДЕМОКРАТИЧНАЯ ЦЕНОВАЯ
-                ПОЛИТИКА – ВОТ ОПРЕДЕЛЯЮЩИЕ ПРИНЦИПЫ РАБОТЫ ОК «РЕСТОРАНЫ КРЯ».</p>
+                ПОЛИТИКА – ВОТ ОПРЕДЕЛЯЮЩИЕ ПРИНЦИПЫ РАБОТЫ ОК «РЕСТОРАНЫ ТОчКА».</p>
             <p align="JUSTIFY"></p></div>
     </div>
 </section>
-
+<hr>
+<br>
+<br>
 
 <center>
     <h3 class="section_title">МЕНЮ</h3>
 
-    <p><a href="/menus">Список меню</a></p>
+    <table style="align-items:center">
+        <tr>
+            <th></th>
+
+        </tr>
+        <c:forEach var="menu" items="${menus}">
+
+            <tr>
+                <td><a href="/menu?menuName=${menu.name}"> ${menu.name}</a></td>
+
+            </tr>
+
+        </c:forEach>
+
+    </table>
+    <br>
+    <br>
 
 
 </center>
@@ -119,10 +136,9 @@
     <form:form class="form-horizontal" method="get" action="${indexActionUrl}">
         <div class="container">
             <div class="row">
-                    <%-- <h4>  Search by name</h4>--%>
                 <div class="search">
-                        <%--<form:input path="searchingName" type="text" class="form-control input-sm" id="searchingName" placeholder="Search" />--%>
-                    <input type="text" class="form-control input-sm" name="name" placeholder="Введите название"/>
+                    <input type="text" class="form-control input-sm" name="name" placeholder="Искать блюдо по названию"/>
+                    <br>
                     <button type="submit" class="btnn btn-primary btn-sm">Поиск</button>
                 </div>
             </div>
@@ -142,7 +158,7 @@
     </table>
 </center>
 
-<h4>Hello world. It's now: ${currentTime}</h4>
+<h6>It's now: ${currentTime}</h6>
 </body>
 
 </html>

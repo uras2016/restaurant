@@ -8,40 +8,65 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <div style="margin-left: 20px">
-        <table style="width: 100%">
-            <center>
+    <h2 align="center">Наш персонал</h2>
 
-            <td>
-                <h2>Наш персонал</h2>
-                <img src="<c:url value="/resources/images/personal.jpg"/>">
-            </td>
-            </center>
-
-        </table>
-
-    </div>
 </head>
 <body>
 <center>
-<table style="align-items:center">
-    <tr>
-        <th>Имя официанта</th>
-        <th>Позиция</th>
-    </tr>
-    <c:forEach var="employee" items="${employees}" >
+    <div style="width: 60%; margin-left: 100px">
+        <table style="align-items:center">
 
-        <tr>
-            <td><a href="/employee?employeeName=${employee.name}"> ${employee.name}</a></td>
-            <td>${employee.position}</td>
+            <tr>
+                <td>
+                    <table border="0.2" style="align-items: center" class="table ">
 
-        </tr>
+                        <tr>
 
-    </c:forEach>
+                            <td height="140" style="align-items: center" ; width="20%">
+                                <img src="<c:url value="/resources/images/muzhik1.jpg"/>"/>
+                            </td>
+                        <tr>
+                            <td height="140" style="align-items: center" ; width="20%">
+                                <img src="<c:url value="/resources/images/muzhik2.jpg"/>"/>
+                            </td>
+                        <tr>
+                            <td height="140" style="align-items: center" ; width="20%">
+                                <img src="<c:url value="/resources/images/katya.jpg"/>"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="140" style="align-items: center" ; width="20%">
+                                <img src="<c:url value="/resources/images/anna.jpg"/>"/>
+                            </td>
+                        <tr>
+                            <td height="140" style="align-items: center" ; width="20%">
+                                <img src="<c:url value="/resources/images/muzhik3.jpg"/>"/>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                        <table border="0.2" style="align-items: center" class="table ">
 
-</table>
-<a href="/">Go Home</a>
-<%--<a href="/">Short info</a>--%>
+                        <c:forEach var="employee" items="${employees}">
+
+                            <tr>
+
+                                <td height="140"><a href="/employee?employeeName=${employee.name}"> ${employee.name}</a></td>
+                                <%--<td height="15">${employee.position}</td>--%>
+
+                            </tr>
+
+                        </c:forEach>
+                    </table>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+    <a href="/">Go Home</a>
+    <%--<a href="/">Short info</a>--%>
 </center>
 </body>
 </html>
