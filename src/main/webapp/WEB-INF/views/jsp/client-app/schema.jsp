@@ -12,12 +12,14 @@
     <table style="width: 100%">
 
             <td>
-                <h2>Схема</h2>
-                <img src="<c:url value="/resources/images/sch.jpg"/>">
+                <h2>Расположение столиков</h2>
+                <img src="<c:url value="/resources/images/shemaStolov_03.png"/>">
             </td>
 
     </table>
 
 </div>
+<a href="/">Go Home</a>
+
 </body>
 </html>
