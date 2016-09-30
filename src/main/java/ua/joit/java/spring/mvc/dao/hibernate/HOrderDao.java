@@ -1,15 +1,13 @@
 package ua.joit.java.spring.mvc.dao.hibernate;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ua.joit.java.spring.mvc.dao.OrderDao;
-import ua.joit.java.spring.mvc.model.Dish;
-import ua.joit.java.spring.mvc.model.Menu;
-import ua.joit.java.spring.mvc.model.Orders;
-import ua.joit.java.spring.mvc.model.PreparedDish;
+import ua.joit.java.spring.mvc.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +20,14 @@ public class HOrderDao implements OrderDao {
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void save(Orders order) {
-        order.setOpenStatus(true);
+        order.setOpenStatus(Status.OPEN);
         sessionFactory.getCurrentSession().save(order);
     }
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void deleteOrder(Orders order) {
-        if (order.isOpen()) {
+        if (order.getStatus()==Status.OPEN) {
 
             sessionFactory.getCurrentSession().remove(order);
         }
@@ -78,8 +76,8 @@ public class HOrderDao implements OrderDao {
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void closeOrder(Orders order) {
-        if (order.isOpen()) {
-            order.setOpenStatus(false);
+        if (order.getStatus()==Status.OPEN) {
+            order.setOpenStatus(Status.CLOSE);
 
             List<PreparedDish> allPreparedDishes = new ArrayList<>();
 
@@ -100,13 +98,22 @@ public class HOrderDao implements OrderDao {
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public List<Orders> findAllOpenedOrders() {
-        return sessionFactory.getCurrentSession().createQuery("select o from Orders o where o.status = :true").list();
+        return sessionFactory.getCurrentSession().createQuery("select o from Orders o where o.status = :status").list();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public List<Orders> findSpecialOrders(Status status) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select o from Orders o where o.status like :status"); // :name - параметр, переданный в запрос
+        query.setParameter("status", status); // "name" должен совпадать с параметром в квери - :name
+        return query.getResultList();
     }
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public List<Orders> findAllClosedOrders() {
-        return sessionFactory.getCurrentSession().createQuery("select o from Orders o where o.status = :false").list();
+        return sessionFactory.getCurrentSession().createQuery("select o from Orders o where o.status = :1").list();
 
     }
 

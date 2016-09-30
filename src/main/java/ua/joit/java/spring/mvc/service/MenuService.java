@@ -12,11 +12,17 @@ public class MenuService {
     private MenuDao menuDao;
 
     @Transactional
-    public List<Menu> getMenus(){
+    public List<Menu> getMenus() {
         return menuDao.findAll();
     }
+
     @Transactional
-    public Menu getMenuByName(String name){
+    public List<Menu> findAllNames() {
+        return menuDao.findAllNames();
+    }
+
+    @Transactional
+    public Menu getMenuByName(String name) {
         return menuDao.getByName(name);
     }
 
@@ -31,16 +37,23 @@ public class MenuService {
     }
 
     @Transactional
-    public Menu getByName(String name) {return menuDao.getByName(name);}
+    public Menu getByName(String name) {
+        return menuDao.getByName(name);
+    }
+
     @Transactional
     public Menu getById(Long id) {
         return menuDao.getById(id);
     }
+
     @Transactional
-    public void addDishToMenu(Dish dish, Menu menu) {menuDao.addDish(dish,menu);}
+    public void addDishToMenu(Dish dish, Menu menu) {
+        menuDao.addDish(dish, menu);
+    }
+
     @Transactional
     public void deleteDishFromMenu(Dish dish, Menu menu) {
-        menuDao.deleteDish(dish,menu);
+        menuDao.deleteDish(dish, menu);
     }
 
 

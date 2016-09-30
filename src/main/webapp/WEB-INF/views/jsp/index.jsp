@@ -61,6 +61,8 @@
                                                               class="btn btn-primary">Контакты</a></div>
     <div style="position:absolute; top:450px; left:750px;"><a href="/employees" button type="submit"
                                                               class="btn btn-primary">Наш персонал</a></div>
+    <div style="position:absolute; top:450px; left:910px;"><a href="/rest" button type="submit"
+                                                               class="btn btn-warning">Rest</a></div>
     <div style="position:absolute; top:450px; left:1000px;"><a href="/admin" button type="submit"
                                                                class="btn btn-success">Администрирование</a></div>
 
@@ -153,7 +155,7 @@
         <td>
             <a href="/dishes" button type="submit" class="btn-lg btn-danger">Все блюда</a>
             <a href="/ingredients" button type="submit" class="btn-lg btn-danger">Все ингредиенты</a>
-            <a href="/employees" button type="submit" class="btn-lg btn-danger">Все сотрудники</a>
+            <a href="/employeesAll" button type="submit" class="btn-lg btn-danger">Все сотрудники</a>
         </td>
     </table>
 </center>

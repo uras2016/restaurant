@@ -54,6 +54,12 @@ public class HEmployeeDao implements EmployeeDao {
     }
     @Override
     @Transactional
+    public List<Employee> findAllNamesAndSurnames() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("select e.name, e.surname from Employee e").list();
+    }
+    @Override
+    @Transactional
     public List<Employee> findAllWaiters(Position position) {
 
         Session session = sessionFactory.getCurrentSession();

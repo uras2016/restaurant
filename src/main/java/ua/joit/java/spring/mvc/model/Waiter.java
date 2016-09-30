@@ -14,7 +14,7 @@ public class Waiter extends Employee{
 
     @OneToMany(fetch = FetchType.EAGER) // lazy - by default
     @JoinColumn(name = "employee_id")
-    @Fetch(FetchMode.SELECT)  // каким образом будут вытащены данные
+    @Fetch(FetchMode.SUBSELECT)  // каким образом будут вытащены данные
     private List<Orders> orders;
 
 

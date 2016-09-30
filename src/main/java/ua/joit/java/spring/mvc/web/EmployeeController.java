@@ -26,6 +26,14 @@ public class EmployeeController {
         return "client-app/employee/employees";  // возвращаем JSP
     }
 
+        @RequestMapping(value = "/employeesAll", method = RequestMethod.GET)
+    public String employeesAll(Map<String, Object> model) {
+
+        model.put("employees", employeeService.getEmployees());
+
+        return "client-app/employee/employeesAll";  // возвращаем JSP
+    }
+
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
     public ModelAndView employee(@RequestParam("employeeName") String employeeName) {
         ModelAndView modelAndView = new ModelAndView();
@@ -41,15 +49,17 @@ public class EmployeeController {
         model.addAttribute("employees", employeeService.getEmployees());
         return "admin/employee/employees";
     }
+
     @RequestMapping(value = "/admin/employees", method = RequestMethod.POST) // add employee
-    public String saveOrUpdateEmployee(@ModelAttribute("employeeForm") @Validated Employee employee, BindingResult result){
-        if(result.hasErrors()) {
+    public String saveOrUpdateEmployee(@ModelAttribute("employeeForm") @Validated Employee employee, BindingResult result) {
+        if (result.hasErrors()) {
             return "admin/dish/form";
         }
         employeeService.save(employee);
 
         return "redirect:/admin/employees";
     }
+
     @RequestMapping(value = "/admin/employees/add", method = RequestMethod.GET)
     public String showAddDishForm(Model model) {
 
@@ -60,6 +70,7 @@ public class EmployeeController {
         return "admin/employee/form";
 
     }
+
     @RequestMapping(value = "/admin/employees/employee/{id}", method = RequestMethod.GET)
     public ModelAndView Menu(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView();
@@ -71,7 +82,7 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/admin/employees/{id}/delete", method = RequestMethod.GET)
-    public String deleteEmployee(@PathVariable("id") Long id){
+    public String deleteEmployee(@PathVariable("id") Long id) {
         employeeService.remove(employeeService.getById(id));
         return "redirect:/admin/employees";
     }

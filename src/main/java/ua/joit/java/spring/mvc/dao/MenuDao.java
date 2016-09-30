@@ -1,5 +1,6 @@
 package ua.joit.java.spring.mvc.dao;
 
+import org.springframework.transaction.annotation.Transactional;
 import ua.joit.java.spring.mvc.model.Dish;
 import ua.joit.java.spring.mvc.model.Menu;
 
@@ -16,6 +17,8 @@ public interface MenuDao {
     void deleteDish(Dish dish, Menu menu/*TODO:List<Dish>*/);
     Menu getByName(String name);
     List<Menu> findAll();
+
+    List<Menu> findAllNames();
 
     void removeAllMenus();
 }

@@ -1,5 +1,6 @@
 package ua.joit.java.spring.mvc.dao;
 
+import org.springframework.transaction.annotation.Transactional;
 import ua.joit.java.spring.mvc.model.Employee;
 import ua.joit.java.spring.mvc.model.Position;
 
@@ -11,6 +12,9 @@ public interface EmployeeDao {
     void remove(Employee employee);
     Employee findByName(String name);
     List<Employee> findAll();
+
+    List<Employee> findAllNamesAndSurnames();
+
     public List<Employee> findAllWaiters(Position position);
 
     void removeAllEmployees();

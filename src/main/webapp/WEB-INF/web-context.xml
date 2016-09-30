@@ -12,6 +12,8 @@
        http://www.springframework.org/schema/context/spring-context.xsd ">
 
     <context:component-scan base-package="ua.joit.java.spring.mvc.web"/> <!--обьясняем где находяться контроллеры-->
+    <context:component-scan base-package="ua.joit.java.spring.mvc.rest"/>
+
     <mvc:annotation-driven/>  <!--конфигурируем мвс при помощи аннотаций-->
 
     <mvc:resources mapping="/resources/**" location="/resources/"/>
@@ -22,7 +24,15 @@
         <property name="prefix" value="/WEB-INF/views/jsp/" />
         <property name="suffix" value=".jsp"/>
     </bean>
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="messageConverter"/>
+            </list>
+        </property>
+    </bean>
 
-
+<!--конвертирует из java в json-->
+    <bean id="messageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
 
 </beans>

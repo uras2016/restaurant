@@ -1,5 +1,6 @@
 package ua.joit.java.spring.mvc.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class Orders {
 
     @ManyToOne          /*много ордеров у одного емплоии*/
     @JoinColumn(name = "employee_id")   /*в колонку employee_id будем заносить айдишники емплоии*/
+    @JsonIgnore
     private Employee waiter;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)             /* нужна третья таблица    в несколько ордеров могут входить много диш, несколько диш могут входить в разные ордеры*/
@@ -31,8 +33,9 @@ public class Orders {
     private int tableNumber;
     @Column(name = "order_date")
     private Date orderDate;
+    @Enumerated(EnumType.STRING)
     @Column(name = "open_status")
-    private boolean status;
+    private Status status;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -40,6 +43,7 @@ public class Orders {
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "prepared_dish_id")
     )
+    @JsonIgnore
     private List<PreparedDish> preparedDishes;
 
 
@@ -83,12 +87,16 @@ public class Orders {
         this.orderDate = orderDate;
     }
 
-    public boolean isOpen() {
+    public Status isOpen() {
+        return Status.OPEN;
+    }
+
+    public Status getStatus() {
         return status;
     }
 
-    public void setOpenStatus(boolean isOpen) {
-        this.status = isOpen;
+    public void setOpenStatus(Status status) {
+        this.status = status;
     }
 
     public List<PreparedDish> getPreparedDishes() {
