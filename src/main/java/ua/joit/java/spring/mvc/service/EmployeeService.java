@@ -27,6 +27,14 @@ public class EmployeeService {
     }
 
     @Transactional
+    public Employee getEmployeeBySurname(String surname) {
+        return employeeDao.findBySurname(surname);
+    }
+    @Transactional
+    public Employee getEmployeeByNameAndSurname(String name, String surname) {
+        return employeeDao.findByNameAndSurname(name,surname);
+    }
+    @Transactional
     public Employee getById(Long id) {
         return employeeDao.getById(id);
     }
@@ -37,6 +45,11 @@ public class EmployeeService {
     @Transactional
     public void remove(Employee employee) {
         employeeDao.remove(employee);
+    }
+
+    @Transactional
+    public List<Employee> findAllNamesAndSurnames() {
+        return employeeDao.findAllNamesAndSurnames();
     }
 
     @Autowired

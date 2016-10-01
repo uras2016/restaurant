@@ -38,6 +38,25 @@ public class HEmployeeDao implements EmployeeDao {
         query.setParameter("name", name); // "name" должен совпадать с параметром в квери - :name
         return (Employee) query.uniqueResult();
     }
+    @Override
+    @Transactional
+    public Employee findBySurname(String surname) {
+
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select e from Employee e where e.surname like :surname"); // :name - параметр, переданный в запрос
+        query.setParameter("surname", surname); // "name" должен совпадать с параметром в квери - :name
+        return (Employee) query.uniqueResult();
+    }
+    @Override
+    @Transactional
+    public Employee findByNameAndSurname(String name, String surname) {
+
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select e from Employee e where e.name like :name and e.surname like :surname"); // :name - параметр, переданный в запрос
+        query.setParameter("name", name);
+        query.setParameter("surname", surname); // "name" должен совпадать с параметром в квери - :name
+        return (Employee) query.uniqueResult();
+    }
 
     @Override
     @Transactional

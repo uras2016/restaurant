@@ -17,6 +17,10 @@ public interface EmployeeDao {
 
     public List<Employee> findAllWaiters(Position position);
 
+    Employee findBySurname(String surname);
+
+    Employee findByNameAndSurname(String name, String surname);
+
     void removeAllEmployees();
 
     Employee getById(Long id);

@@ -28,12 +28,12 @@
                 <a href="/rest/menus" button type="submit"
                    class="btn btn-danger">Список Меню</a></p>
 
-            <spring:url value="/admin/store/find" var="storeActionUrl"/>
+            <spring:url value="/rest/menus/findId" var="storeActionUrl"/>
             <form:form class="form-horizontal" method="get" action="${storeActionUrl}">
         <div class="container">
             <div class="row">
                 <div class="search">
-                    <input type="text" class="form-control input-sm" name="name" placeholder="Поиск меню по ID"/>
+                    <input type="number" class="form-control input-sm" name="id" placeholder="Поиск меню по ID"/>
                     <button type="submit" class="btnn btn-primary btn-sm">Меню по ID</button>
                 </div>
             </div>
@@ -41,7 +41,7 @@
         </form:form>
     </p>
 
-    <spring:url value="/admin/store/find" var="storeActionUrl"/>
+    <spring:url value="/rest/menus/find" var="storeActionUrl"/>
     <form:form class="form-horizontal" method="get" action="${storeActionUrl}">
         <div class="container">
             <div class="row">
@@ -65,12 +65,12 @@
             <a href="/rest/closedOrders" button type="submit"
                class="btn btn-danger">Список закрытых заказов</a>
     </p>
-    <spring:url value="/admin/store/find" var="storeActionUrl"/>
+    <spring:url value="/rest/orders/findId" var="storeActionUrl"/>
     <form:form class="form-horizontal" method="get" action="${storeActionUrl}">
         <div class="container">
             <div class="row">
                 <div class="search">
-                    <input type="text" class="form-control input-sm" name="name" placeholder="Поиск заказа по ID"/>
+                    <input type="number" class="form-control input-sm" name="id" placeholder="Поиск заказа по ID"/>
                     <button type="submit" class="btnn btn-primary btn-sm">Заказ по ID</button>
                 </div>
             </div>
@@ -82,12 +82,12 @@
             <a href="/rest/employees" button type="submit"
                class="btn btn-danger">Список сотрудников</a>
             </p>
-<spring:url value="/admin/store/find" var="storeActionUrl"/>
+<spring:url value="/rest/employees/findId" var="storeActionUrl"/>
 <form:form class="form-horizontal" method="get" action="${storeActionUrl}">
     <div class="container">
         <div class="row">
             <div class="search">
-                <input type="text" class="form-control input-sm" name="name" placeholder="Поиск сотрудника по ID"/>
+                <input type="number" class="form-control input-sm" name="id" placeholder="Поиск сотрудника по ID"/>
                 <button type="submit" class="btnn btn-primary btn-sm">Сотрудник по ID</button>
             </div>
         </div>
@@ -95,7 +95,7 @@
 </form:form>
 </p>
 
-<spring:url value="/admin/store/find" var="storeActionUrl"/>
+<spring:url value="/rest/employees/findName" var="storeActionUrl"/>
 <form:form class="form-horizontal" method="get" action="${storeActionUrl}">
     <div class="container">
         <div class="row">
@@ -107,19 +107,19 @@
     </div>
 </form:form>
 </p>
-<spring:url value="/admin/store/find" var="storeActionUrl"/>
+<spring:url value="/rest/employees/findSurname" var="storeActionUrl"/>
 <form:form class="form-horizontal" method="get" action="${storeActionUrl}">
     <div class="container">
         <div class="row">
             <div class="search">
-                <input type="text" class="form-control input-sm" name="name" placeholder="Поиск сотрудника по фамилии"/>
+                <input type="text" class="form-control input-sm" name="surname" placeholder="Поиск сотрудника по фамилии"/>
                 <button type="submit" class="btnn btn-primary btn-sm">Сотрудник по фамилии</button>
             </div>
         </div>
     </div>
 </form:form>
 </p>
-<spring:url value="/admin/store/find" var="storeActionUrl"/>
+<spring:url value="/rest/employees/findNameAndSurname" var="storeActionUrl"/>
 <form:form class="form-horizontal" method="get" action="${storeActionUrl}">
     <div class="container">
         <div class="row">
