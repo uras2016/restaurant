@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<table style="align-items:center">
+<table align="center" style="align-items:center">
     <tr>
         <th>First Name</th>
         <th>Last Name</th>
@@ -27,8 +27,9 @@
         </tr>
 
 </table>
+<div align="center">
 <a href="/">Go Home</a>
 <a href="/employees">Show all employees</a>
-
+</div>
 </body>
 </html>

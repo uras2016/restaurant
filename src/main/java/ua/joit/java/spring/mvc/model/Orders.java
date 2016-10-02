@@ -11,6 +11,10 @@ import java.util.List;
 @Table(name = "orders")
 public class Orders {
 
+//    @Id@GeneratedValue(strategy=GenerationType.AUTO)
+//    private Long id;
+
+
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
@@ -46,7 +50,19 @@ public class Orders {
     @JsonIgnore
     private List<PreparedDish> preparedDishes;
 
+    public Orders(Employee waiter, List<Dish> dishes, int tableNumber, Date orderDate, Status status) {
+        this.waiter = waiter;
+        this.dishes = dishes;
+        this.tableNumber = tableNumber;
+        this.orderDate = orderDate;
+        this.status = status;
+    }
 
+    public Orders() {
+    }
+    public boolean isNew() {
+        return (this.id == null);
+    }
     public Long getId() {
         return id;
     }

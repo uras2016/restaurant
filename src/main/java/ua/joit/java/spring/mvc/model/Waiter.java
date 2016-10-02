@@ -17,7 +17,12 @@ public class Waiter extends Employee{
     @Fetch(FetchMode.SUBSELECT)  // каким образом будут вытащены данные
     private List<Orders> orders;
 
+    public Waiter(String name, String surname, int telephone, Position position, Float salary, String birthday) {
+        super(name, surname, telephone, position, salary, birthday);
+    }
 
+    public Waiter() {
+    }
 
     public List<Orders> getOrders() {
         return orders;

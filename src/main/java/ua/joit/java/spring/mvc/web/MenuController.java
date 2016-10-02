@@ -12,6 +12,7 @@ import ua.joit.java.spring.mvc.model.Menu;
 import ua.joit.java.spring.mvc.service.DishService;
 import ua.joit.java.spring.mvc.service.MenuService;
 
+import java.io.IOException;
 import java.util.*;
 
 @Controller
@@ -19,6 +20,13 @@ public class MenuController {
 
     private MenuService menuService;
     private DishService dishService;
+
+    @ExceptionHandler(IOException.class)
+    public ModelAndView handleIOException(IOException exception) {
+        ModelAndView modelAndView = new ModelAndView("/exception/catchedException");
+        modelAndView.addObject("message", exception.getMessage());
+        return modelAndView;
+    }
 
     @RequestMapping(value = "/menu", method = RequestMethod.GET)
     public ModelAndView menu(@RequestParam("menuName") String menuName) {
@@ -112,13 +120,11 @@ public class MenuController {
         menu.getDishes().add(actualDish);
         menuService.add(menu);
 
-        System.out.println(menu.toString());
-
         return "redirect:/admin/menus/menu/" + menu.getId();
     }
 
     @RequestMapping(value = "/admin/menus/{menuId}/deleteDish/{dishId}", method = RequestMethod.GET)
-    public String deleteDishFromOrder(@PathVariable("menuId") Long menuId, @PathVariable("dishId") Long dishId) {
+    public String deleteDishFromMenu(@PathVariable("menuId") Long menuId, @PathVariable("dishId") Long dishId) {
         Menu menu = menuService.getById(menuId);
         List<Dish> dishes = menu.getDishes();
         Iterator<Dish> iterator = dishes.iterator();

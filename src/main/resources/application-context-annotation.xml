@@ -27,4 +27,7 @@
     <bean id="orderService" class="ua.joit.java.spring.mvc.service.OrderService"/>
     <bean id="orderDao" class="ua.joit.java.spring.mvc.dao.hibernate.HOrderDao"/>
 
+    <bean id="preparedDishDao" class="ua.joit.java.spring.mvc.dao.hibernate.HPreparedDishDao"/>
+
+
 </beans>

@@ -9,4 +9,5 @@ public interface PreparedDishesDAO {
     void create(PreparedDish preparedDish);
     List<PreparedDish> findAll();
 
+    void removeAllPreparedDishes();
 }

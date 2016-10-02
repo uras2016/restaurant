@@ -1,5 +1,6 @@
 package ua.joit.java.spring.mvc.dao.hibernate;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,14 @@ public class HWarehouseDao implements WarehouseDao {
         query.setParameter("ingredientName", ingredientName);
         query.executeUpdate();
     }
+    @Override
+    @Transactional
+    public void changeQuantity(Warehouse warehouse, Float newQuantity) {
+        warehouse.setQuantity(newQuantity);
+
+        sessionFactory.getCurrentSession().update(warehouse);
+
+    }
 
     @Override
     @Transactional
@@ -57,6 +66,12 @@ public class HWarehouseDao implements WarehouseDao {
             throw new RuntimeException("Ingredient was not fount by id = " + id);
         }
         return result;
+    }
+    public Warehouse getWarehouseIngredientById(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select i from Warehouse i where i.ingredient.id = :id");
+        query.setParameter("id", id);
+        return (Warehouse) query.uniqueResult();
     }
 
     @Override

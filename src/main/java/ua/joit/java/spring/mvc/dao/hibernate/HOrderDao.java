@@ -6,7 +6,9 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import ua.joit.java.spring.mvc.Exceptions.ProhibitionException;
 import ua.joit.java.spring.mvc.dao.OrderDao;
+import ua.joit.java.spring.mvc.dao.WarehouseDao;
 import ua.joit.java.spring.mvc.model.*;
 
 import java.util.ArrayList;
@@ -16,20 +18,29 @@ public class HOrderDao implements OrderDao {
 
     @Autowired
     private SessionFactory sessionFactory;
+    @Autowired
+    private WarehouseDao warehouseDao;
+
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void save(Orders order) {
         order.setOpenStatus(Status.OPEN);
-        sessionFactory.getCurrentSession().save(order);
+        List<Dish> dishes = order.getDishes();
+        for (Dish dish : dishes) {
+            checkIngredientsInWarehouse(dish); // validation
+        }
+        sessionFactory.getCurrentSession().saveOrUpdate(order);
     }
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void deleteOrder(Orders order) {
-        if (order.getStatus()==Status.OPEN) {
+        if (order.getStatus() == Status.OPEN) {
 
             sessionFactory.getCurrentSession().remove(order);
+        } else {
+            throw new IllegalArgumentException("Order is not open");
         }
     }
 
@@ -53,13 +64,16 @@ public class HOrderDao implements OrderDao {
     }
 
 
-
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void addDishToOrder(Dish dish, Orders orders) {
-        if (!orders.getDishes().contains(dish)){
-            orders.getDishes().add(dish);
-            sessionFactory.getCurrentSession().saveOrUpdate(orders);
+        if (orders.getStatus() == Status.CLOSE) {
+            throw new ProhibitionException("Order was closed");
+        } else {
+            if (!orders.getDishes().contains(dish)) {
+                orders.getDishes().add(dish);
+                sessionFactory.getCurrentSession().saveOrUpdate(orders);
+            }
         }
     }
 
@@ -67,7 +81,7 @@ public class HOrderDao implements OrderDao {
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void deleteDishFromOrder(Dish dish, Orders orders) {
-        if (orders.getDishes().contains(dish)){
+        if (orders.getDishes().contains(dish)) {
             orders.getDishes().remove(dish);
             sessionFactory.getCurrentSession().saveOrUpdate(orders);
         }
@@ -76,7 +90,7 @@ public class HOrderDao implements OrderDao {
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void closeOrder(Orders order) {
-        if (order.getStatus()==Status.OPEN) {
+        if (order.getStatus() == Status.OPEN) {
             order.setOpenStatus(Status.CLOSE);
 
             List<PreparedDish> allPreparedDishes = new ArrayList<>();
@@ -92,6 +106,29 @@ public class HOrderDao implements OrderDao {
 
             order.setPreparedDishes(allPreparedDishes);
             sessionFactory.getCurrentSession().saveOrUpdate(order);
+        }
+    }
+
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void checkIngredientsInWarehouse(Dish dish) {
+
+        List<Ingredient> ingredientsInDish = dish.getIngredients();
+        for (Ingredient ingredient : ingredientsInDish) {
+
+            Warehouse warehouse = warehouseDao.getById(ingredient.getId());
+            Float warehouseIngredientQuantity = warehouse.getQuantity()-1F;
+
+//            Float newQuantity = warehouseIngredientQuantity - 1F;
+
+
+            if (warehouseIngredientQuantity > 0) {
+                warehouseDao.changeQuantity(warehouse, warehouseIngredientQuantity);
+
+            } else {
+                throw new ProhibitionException("Ingredient " + ingredient.getName() + "is over. Ingredient quantity = " + warehouseIngredientQuantity);
+
+            }
+
         }
     }
 
@@ -127,6 +164,10 @@ public class HOrderDao implements OrderDao {
     @Transactional
     public void removeAllOrders() {
         sessionFactory.getCurrentSession().createQuery("delete from Orders").executeUpdate();
+    }
+
+    public void setWarehouseDao(WarehouseDao warehouseDao) {
+        this.warehouseDao = warehouseDao;
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {

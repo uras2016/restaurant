@@ -17,6 +17,13 @@ public class Cook extends Employee{
     @Fetch(FetchMode.SUBSELECT)  // каким образом будут вытащены данные
     private List<PreparedDish> preparedDishes;
 
+    public Cook(String name, String surname, int telephone, Position position, Float salary, String birthday) {
+        super(name, surname, telephone, position, salary, birthday);
+    }
+
+    public Cook() {
+    }
+
     public List<PreparedDish> getPreparedDishes() {
         return preparedDishes;
     }

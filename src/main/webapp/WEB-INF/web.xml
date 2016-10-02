@@ -26,27 +26,27 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
-      WEB-INF/application-context-annotation.xml
-      WEB-INF/hibernate-context.xml
+      classpath:/application-context-annotation.xml
+      classpath:/hibernate-context.xml
     </param-value>
   </context-param>
 
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
- <!-- <error-page>
-    <error-code>500</error-code>
-    <location>/WEB-INF/views/jsp/error.jsp</location>
-  </error-page>
+  <!--<error-page>-->
+    <!--<error-code>500</error-code>-->
+    <!--<location>/WEB-INF/views/jsp/error.jsp</location>-->
+  <!--</error-page>-->
 
-  <error-page>
-    <error-code>404</error-code>
-    <location>/WEB-INF/views/jsp/error.jsp</location>
-  </error-page>
+  <!--<error-page>-->
+    <!--<error-code>404</error-code>-->
+    <!--<location>/WEB-INF/views/jsp/error.jsp</location>-->
+  <!--</error-page>-->
 
-  <error-page>
-    <location>/WEB-INF/views/jsp/error.jsp</location>
-  </error-page>-->
+  <!--<error-page>-->
+    <!--<location>/WEB-INF/views/jsp/error.jsp</location>-->
+  <!--</error-page>-->
 
 
 </web-app>

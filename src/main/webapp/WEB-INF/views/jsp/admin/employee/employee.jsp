@@ -12,6 +12,15 @@
 <jsp:include page="../fragments/header.jsp"/>
 
 <div>
+    <c:if test="${not empty msg}">
+        <div class="alert alert-${css} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>${msg}</strong>
+        </div>
+    </c:if>
+
     <div style="width: 35%; margin-left: 30px">
         <h2>${employee.name}</h2> <h2>${employee.surname}</h2>
 

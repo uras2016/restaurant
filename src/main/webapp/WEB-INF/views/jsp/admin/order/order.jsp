@@ -38,7 +38,7 @@
                     <td>${dish.weight}</td>
                     <td>${dish.measure}</td>
                     <td style="align-items: center; width: 1px">
-                        <spring:url value="/admin/order/${order.id}/deleteDish/${dish.id}" var="deleteDishFromOrderUrl"/>
+                        <spring:url value="/admin/orders/${order.id}/deleteDish/${dish.id}" var="deleteDishFromOrderUrl"/>
                         <a href="${deleteDishFromOrderUrl}">Delete</a>
                     </td>
                 </tr>

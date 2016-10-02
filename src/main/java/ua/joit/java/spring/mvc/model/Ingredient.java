@@ -17,6 +17,13 @@ public class Ingredient {
     @Column(name = "name")
     private String name;
 
+    public Ingredient(String name) {
+        this.name=name;
+    }
+    public Ingredient() {
+
+    }
+
     public boolean isNew() {
         return (this.id == null);
     }

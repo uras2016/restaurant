@@ -23,7 +23,13 @@ public class HPreparedDishDao implements PreparedDishesDAO {
     @Transactional
     public List<PreparedDish> findAll() {
 
-        return sessionFactory.getCurrentSession().createQuery("select pd from PrepareDish pd").list();
+        return sessionFactory.getCurrentSession().createQuery("select pd from PreparedDish pd").list();
+    }
+
+    @Override
+    @Transactional
+    public void removeAllPreparedDishes() {
+        sessionFactory.getCurrentSession().createQuery("delete from PreparedDish").executeUpdate();
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {

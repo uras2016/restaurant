@@ -29,7 +29,17 @@ public class Employee {
     @Column(name = "birthday")
     private String birthday;
 
+    public Employee(String name, String surname, int telephone, Position position, Float salary, String birthday) {
+        this.name = name;
+        this.surname = surname;
+        this.telephone = telephone;
+        this.position = position;
+        this.salary = salary;
+        this.birthday = birthday;
+    }
 
+    public Employee() {
+    }
 
     public boolean isNew() {
         return (this.id == null);

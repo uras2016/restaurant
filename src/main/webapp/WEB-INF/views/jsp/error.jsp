@@ -10,12 +10,10 @@
 
 <div class="container">
 
-    <h1>Error</h1>
+	<h1>Error Page</h1>
 
-    <p>${exception.message}</p>
-
-
-    <!-- Exception: ${exception.message}.
+	<p>${exception.message}</p>
+	<!-- Exception: ${exception.message}.
 		  	<c:forEach items="${exception.stackTrace}" var="stackTrace">
 				${stackTrace}
 			</c:forEach>

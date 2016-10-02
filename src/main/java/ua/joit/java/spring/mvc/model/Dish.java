@@ -38,6 +38,22 @@ public class Dish {
 
     private List<Ingredient> ingredients;
 
+    @OneToOne
+    @JoinColumn(name = "cook_id")
+    private Employee cooker;
+
+    public Dish(String name, DishCategory category, Float price, Float weight, Measures measure, List<Ingredient> ingredients, Employee cooker) {
+        this.name = name;
+        this.category = category;
+        this.price = price;
+        this.weight = weight;
+        this.measure = measure;
+        this.ingredients = ingredients;
+        this.cooker = cooker;
+    }
+
+    public Dish() {
+    }
 
     public boolean isNew() {
         return (this.id == null);

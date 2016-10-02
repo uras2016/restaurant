@@ -63,7 +63,7 @@
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <label class="col-sm-2 control-label">Должность</label>
                 <div class="col-sm-10">
-                    <form:input path="position" type="text" class="form-control " id="Position" placeholder="Position, CAPITAL letters" required="required"/>
+                    <form:input path="position" type="text" class="form-control " id="Position" placeholder=" WAITER, COOKER, MANAGER " required="required"/>
                     <form:errors path="position" class="control-label" />
                 </div>
             </div>
@@ -107,6 +107,7 @@
 </div>
 
 <jsp:include page="../fragments/footer.jsp" />
+<p><a href="/admin">Go to options</a></p>
 
 </body>
 </html>

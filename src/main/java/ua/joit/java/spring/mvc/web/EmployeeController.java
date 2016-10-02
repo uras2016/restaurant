@@ -1,6 +1,7 @@
 package ua.joit.java.spring.mvc.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ua.joit.java.spring.mvc.model.Employee;
 import ua.joit.java.spring.mvc.service.EmployeeService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @Controller
@@ -94,7 +96,15 @@ public class EmployeeController {
         return "admin/employee/form";
     }
 
+    @ExceptionHandler(EmptyResultDataAccessException.class)
+    public ModelAndView handleEmptyData(HttpServletRequest req, Exception ex) {
 
+        ModelAndView model = new ModelAndView();
+        model.setViewName("admin/employee/employee");
+        model.addObject("msg", "user not found");
+
+        return model;
+    }
     @Autowired
     public void setEmployeeService(EmployeeService employeeService) {
         this.employeeService = employeeService;

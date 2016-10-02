@@ -58,8 +58,8 @@
             <td>Столик</td>
             <td>Официант</td>
             <td>Дата заказа</td>
-            <%--<th>Выполнен</th>--%>
-            <%--<th colspan="2" align="center">Опции</th>--%>
+            <td>Выполнен</td>
+            <td colspan="2" align="center">Опции</td>
         </tr>
         </thead>
 
@@ -69,18 +69,19 @@
                 <td>${order.tableNumber}</td>
                 <td>${order.waiter.name}</td>
                 <td>${order.orderDate}</td>
-                <%--<td>${order.status}</td>--%>
+                <td>${order.status}</td>
 
+                <td style="align-items: center; width: 20px">
+                    <spring:url value="/admin/orders/${order.id}/delete" var="deleteUrl"/>
+                    <a href="${deleteUrl}">Delete</a>
+                </td>
+                <td style="align-items: center; width: 20px">
+                    <spring:url value="/admin/orders/${order.id}/close" var="closeUrl"/>
+                    <a href="${closeUrl}">Close</a>
+                </td>
 
-                <%--<td style="align-items: center; width: 20px">--%>
-                    <%--<spring:url value="/admin/dishes/${dish.id}/delete" var="deleteUrl"/>--%>
-                    <%--<a href="${deleteUrl}">Delete</a>--%>
-                <%--</td>--%>
-                <%--<td style="align-items: center; width: 20px">--%>
-                    <%--<spring:url value="/admin/dishes/${dish.id}/update" var="updateUrl"/>--%>
-                    <%--<a href="${updateUrl}">Edit</a>--%>
+                </td>
 
-                <%--</td>--%>
             </tr>
 
         </c:forEach>
@@ -245,10 +246,10 @@
         }
         //-->
     </script>
-    <%--<spring:url value="/admin/dishes/add" var="addUrl" />--%>
-    <%--<button class="btn btn-primary" onclick="location.href='${addUrl}'">Добавить блюдо</button>--%>
-    <%--<br>--%>
-    <%--<br>--%>
+    <spring:url value="/admin/orders/add" var="addUrl" />
+    <button class="btn btn-primary" onclick="location.href='${addUrl}'">Добавить заказ</button>
+    <br>
+    <br>
 
 </div>
 <p><a href="/admin">Go to options</a></p>

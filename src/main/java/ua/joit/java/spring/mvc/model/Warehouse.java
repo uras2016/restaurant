@@ -26,6 +26,14 @@ public class Warehouse {
     @Enumerated(EnumType.STRING)
     private Measures measure;
 
+    public Warehouse() {
+    }
+
+    public Warehouse(Ingredient ingredient, Float quantity, Measures measure) {
+        this.ingredient = ingredient;
+        this.quantity = quantity;
+        this.measure = measure;
+    }
 
     public boolean isNew() {
         return (this.id == null);

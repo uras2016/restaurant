@@ -12,9 +12,8 @@
 
 </head>
 <body>
-<center>
-    <div style="width: 60%; margin-left: 100px">
-        <table style="align-items:center">
+    <div align="center" style="width: 85%; margin-left: 100px">
+        <table align="center" style="align-items:center">
 
             <tr>
                 <td>
@@ -67,6 +66,5 @@
 
     <a href="/">Go Home</a>
     <%--<a href="/">Short info</a>--%>
-</center>
 </body>
 </html>

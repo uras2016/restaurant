@@ -1,0 +1,309 @@
+-- Database: "restaurantHibernate"
+
+-- DROP DATABASE "restaurantHibernate";
+
+CREATE DATABASE "restaurantHibernate"
+  WITH OWNER = postgres
+       ENCODING = 'UTF8'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'English_United States.1252'
+       LC_CTYPE = 'English_United States.1252'
+       CONNECTION LIMIT = -1;
+
+
+
+
+-- Table: public.dish
+
+-- DROP TABLE public.dish;
+
+CREATE TABLE public.dish
+(
+  id bigint NOT NULL DEFAULT nextval('dish_id_seq'::regclass),
+  name character varying,
+  category character varying,
+  price real,
+  weight real,
+  measure character varying,
+  cook_id bigint,
+  CONSTRAINT pk_dish_id PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.dish
+  OWNER TO postgres;
+
+
+
+-- Table: public.dish_ingredients
+
+-- DROP TABLE public.dish_ingredients;
+
+CREATE TABLE public.dish_ingredients
+(
+  dish_id bigint NOT NULL,
+  ingredient_id bigint NOT NULL,
+  CONSTRAINT dish_ingredients_dish_id_fk FOREIGN KEY (dish_id)
+      REFERENCES public.dish (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT ingr_fk FOREIGN KEY (ingredient_id)
+      REFERENCES public.ingredient (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE CASCADE
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.dish_ingredients
+  OWNER TO postgres;
+
+-- Index: public.fki_dish_fk
+
+-- DROP INDEX public.fki_dish_fk;
+
+CREATE INDEX fki_dish_fk
+  ON public.dish_ingredients
+  USING btree
+  (dish_id);
+
+-- Index: public.fki_ingr_fk
+
+-- DROP INDEX public.fki_ingr_fk;
+
+CREATE INDEX fki_ingr_fk
+  ON public.dish_ingredients
+  USING btree
+  (ingredient_id);
+
+
+
+
+-- Table: public.dish_to_order
+
+-- DROP TABLE public.dish_to_order;
+
+CREATE TABLE public.dish_to_order
+(
+  dish_id bigint NOT NULL,
+  order_id bigint NOT NULL,
+  CONSTRAINT fk1 FOREIGN KEY (dish_id)
+      REFERENCES public.dish (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE CASCADE
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.dish_to_order
+  OWNER TO postgres;
+
+-- Index: public.fki_fk1
+
+-- DROP INDEX public.fki_fk1;
+
+CREATE INDEX fki_fk1
+  ON public.dish_to_order
+  USING btree
+  (dish_id);
+
+
+
+
+-- Table: public.employee
+
+-- DROP TABLE public.employee;
+
+CREATE TABLE public.employee
+(
+  id bigint NOT NULL DEFAULT nextval('employee_id_seq'::regclass),
+  name character varying,
+  surname character varying,
+  telephone character varying,
+  "position" character varying,
+  salary real,
+  birthday character varying,
+  dtype character varying,
+  CONSTRAINT "pk_employeeId" PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.employee
+  OWNER TO postgres;
+
+
+
+-- Table: public.ingredient
+
+-- DROP TABLE public.ingredient;
+
+CREATE TABLE public.ingredient
+(
+  name character varying,
+  id bigint NOT NULL DEFAULT nextval('ingredient_id_seq'::regclass),
+  CONSTRAINT ingr_pk PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.ingredient
+  OWNER TO postgres;
+
+
+
+-- Table: public.menu
+
+-- DROP TABLE public.menu;
+
+CREATE TABLE public.menu
+(
+  name character varying NOT NULL,
+  id bigint NOT NULL DEFAULT nextval('menu_id_seq'::regclass),
+  CONSTRAINT menipk PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.menu
+  OWNER TO postgres;
+
+
+
+
+-- Table: public.menu_list
+
+-- DROP TABLE public.menu_list;
+
+CREATE TABLE public.menu_list
+(
+  dish_id bigint,
+  menu bigint,
+  CONSTRAINT dish_fk FOREIGN KEY (dish_id)
+      REFERENCES public.dish (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE CASCADE,
+  CONSTRAINT menufk FOREIGN KEY (menu)
+      REFERENCES public.menu (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.menu_list
+  OWNER TO postgres;
+
+-- Index: public.fki_dishes_fk
+
+-- DROP INDEX public.fki_dishes_fk;
+
+CREATE INDEX fki_dishes_fk
+  ON public.menu_list
+  USING btree
+  (dish_id);
+
+-- Index: public.fki_menufk
+
+-- DROP INDEX public.fki_menufk;
+
+CREATE INDEX fki_menufk
+  ON public.menu_list
+  USING btree
+  (menu);
+
+
+
+
+
+-- Table: public.orders
+
+-- DROP TABLE public.orders;
+
+CREATE TABLE public.orders
+(
+  id bigint NOT NULL,
+  employee_id bigint,
+  table_number integer,
+  order_date date,
+  open_status character varying,
+  CONSTRAINT pk PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.orders
+  OWNER TO postgres;
+
+-- Index: public.fki_employee_id
+
+-- DROP INDEX public.fki_employee_id;
+
+CREATE INDEX fki_employee_id
+  ON public.orders
+  USING btree
+  (employee_id);
+
+
+
+
+
+-- Table: public.prepared_dish_to_order
+
+-- DROP TABLE public.prepared_dish_to_order;
+
+CREATE TABLE public.prepared_dish_to_order
+(
+  order_id bigint,
+  prepared_dish_id bigint,
+  CONSTRAINT prepared_dish_to_order_orders__fk FOREIGN KEY (order_id)
+      REFERENCES public.orders (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.prepared_dish_to_order
+  OWNER TO postgres;
+
+
+
+
+
+-- Table: public.prepared_dishes
+
+-- DROP TABLE public.prepared_dishes;
+
+CREATE TABLE public.prepared_dishes
+(
+  id bigint NOT NULL,
+  employee_id bigint,
+  dish_id bigint,
+  date date,
+  CONSTRAINT prepared_dishes_id_pk PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.prepared_dishes
+  OWNER TO postgres;
+
+
+
+
+-- Table: public.warehouse
+
+-- DROP TABLE public.warehouse;
+
+CREATE TABLE public.warehouse
+(
+  id bigint NOT NULL DEFAULT nextval('warehouse_id_seq'::regclass),
+  quantity real,
+  measure character varying,
+  ingredient bigint,
+  CONSTRAINT warepk PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.warehouse
+  OWNER TO postgres;
+
+
+

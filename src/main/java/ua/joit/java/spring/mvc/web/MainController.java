@@ -1,15 +1,16 @@
 package ua.joit.java.spring.mvc.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import ua.joit.java.spring.mvc.Exceptions.ProhibitionException;
 import ua.joit.java.spring.mvc.model.Dish;
 import ua.joit.java.spring.mvc.service.DishService;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller/*(value = "/")*/
 public class MainController {
@@ -28,8 +29,12 @@ public class MainController {
             return "redirect:/";
         } else {
             Dish dish = dishService.findByName(name);
-            modelMap.addAttribute("dishes", dish);
-            return "/find";
+            if (dish == null) {
+                throw new ProhibitionException("There is no such dish.");
+            } else {
+                modelMap.addAttribute("dishes", dish);
+                return "/find";
+            }
         }
     }
 
@@ -45,6 +50,15 @@ public class MainController {
         return modelAndView;
     }
 
+    @ExceptionHandler(EmptyResultDataAccessException.class)
+    public ModelAndView handleEmptyData(HttpServletRequest req, Exception ex) {
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("/dish");
+        model.addObject("msg", "dish not found");
+
+        return model;
+    }
 
     @Autowired
     public void setDishService(DishService dishService) {

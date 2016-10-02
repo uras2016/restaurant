@@ -27,7 +27,7 @@
     </form:form>
 
     <table border="0.2" style="align-items: center" class="table table-striped">
-        <thead style="color:white;background-color:dimgrey">
+        <thead style="color:white;background-color:#2e6da4">
         <tr>
             <th>Блюдо</th>
             <th>Категория</th>
