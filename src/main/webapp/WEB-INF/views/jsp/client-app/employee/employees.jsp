@@ -62,9 +62,8 @@
             </tr>
 
         </table>
+        <a href="/">Go Home</a>
     </div>
 
-    <a href="/">Go Home</a>
-    <%--<a href="/">Short info</a>--%>
 </body>
 </html>

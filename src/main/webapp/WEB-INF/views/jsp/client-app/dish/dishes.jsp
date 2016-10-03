@@ -11,8 +11,7 @@
 
 </head>
 <body>
-<center>
-<table style="align-items:center">
+<table align="center" style="align-items:center">
     <tr>
         <th>Блюдо</th>
         <th>Цена</th>
@@ -36,7 +35,5 @@
 
 </table>
 <a href="/">Go Home</a>
-<%--<a href="/">Short info</a>--%>
-</center>
 </body>
 </html>

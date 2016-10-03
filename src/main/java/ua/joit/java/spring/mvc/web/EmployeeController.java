@@ -53,9 +53,12 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/admin/employees", method = RequestMethod.POST) // add employee
-    public String saveOrUpdateEmployee(@ModelAttribute("employeeForm") @Validated Employee employee, BindingResult result) {
+    public String saveOrUpdateEmployee(@ModelAttribute("employeeForm") @Validated Employee employee, BindingResult result)  {
         if (result.hasErrors()) {
-            return "admin/dish/form";
+            System.out.println("what are you writing, Man?!");
+
+                return "admin/employee/form";
+
         }
         employeeService.save(employee);
 
@@ -63,7 +66,7 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/admin/employees/add", method = RequestMethod.GET)
-    public String showAddDishForm(Model model) {
+    public String showAddEmployeeForm(Model model) {
 
         Employee employee = new Employee();
 

@@ -10,11 +10,9 @@
 <head>
     <div style="margin-left: 15px">
         <table style="width: 100%">
-            <tr style="vertical-align:top">
+            <tr align="center" style="vertical-align:top">
                 <td>
-                    <center>
-                        <img src="<c:url value="/resources/images/finsalad2.jpg"/>">
-                    </center>
+                    <img align="center" src="<c:url value="/resources/images/finsalad2.jpg"/>">
                 </td>
             </tr>
         </table>
@@ -62,7 +60,7 @@
     <div style="position:absolute; top:450px; left:750px;"><a href="/employees" button type="submit"
                                                               class="btn btn-primary">Наш персонал</a></div>
     <div style="position:absolute; top:450px; left:910px;"><a href="/rest" button type="submit"
-                                                               class="btn btn-warning">Rest</a></div>
+                                                              class="btn btn-warning">Rest</a></div>
     <div style="position:absolute; top:450px; left:1000px;"><a href="/admin" button type="submit"
                                                                class="btn btn-success">Администрирование</a></div>
 
@@ -139,7 +137,8 @@
         <div class="container">
             <div class="row">
                 <div class="search">
-                    <input type="text" class="form-control input-sm" name="name" placeholder="Искать блюдо по названию"/>
+                    <input type="text" class="form-control input-sm" name="name"
+                           placeholder="Искать блюдо по названию"/>
                     <br>
                     <button type="submit" class="btnn btn-primary btn-sm">Поиск</button>
                 </div>

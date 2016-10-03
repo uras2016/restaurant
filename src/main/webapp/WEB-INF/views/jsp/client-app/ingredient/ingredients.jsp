@@ -12,8 +12,7 @@
 
 </head>
 <body>
-<center>
-<table style="align-items:center">
+<table align="center" style="align-items:center">
     <tr>
         <th>Ингредиент</th>
 
@@ -21,20 +20,14 @@
     <c:forEach var="ingredient" items="${ingredients}" >
 
         <tr>
-            <%--<td><a href="/ingredient?ingredientName=${ingredient.name}"> ${ingredient.name}</a></td>--%>
             <td>${ingredient.name}</td>
 
-                <%--<td>--%>
-                    <%--<a href="edit?id=${ingredient.id}">Edit</a>--%>
-                    <%--<a href="delete?id=${ingredient.id}">Delete</a>--%>
-                <%--</td>--%>
+
         </tr>
 
     </c:forEach>
 
 </table>
 <a href="/">Go Home</a>
-<%--<a href="/">Short info</a>--%>
-</center>
 </body>
 </html>

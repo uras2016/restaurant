@@ -6,9 +6,9 @@
 
 <html>
 
-<body>
 
-<div style="width: 50%; margin-left: 20px">
+
+<div align="center" style="width: 100%; margin-left: 1px">
 
 
     <h2 style="text-align: center; color: #23527c">Блюдо</h2>
@@ -16,24 +16,24 @@
 
     <spring:url value="/find" var="indexActionUrl"/>
     <form:form class="form-horizontal" method="get" action="${indexActionUrl}">
-        <div class="container">
+        <div align="center" class="container">
             <div class="row">
                 <div class="search">
-                    <input type="text" class="form-control input-sm" name="name" placeholder="Введите название"/>
+                    <input type="text" class="form-control input-sm" name="name" placeholder="Название блюда"/>
                     <button type="submit" class="btnn btn-primary btn-sm">Поиск</button>
                 </div>
             </div>
         </div>
     </form:form>
 
-    <table border="0.2" style="align-items: center" class="table table-striped">
+    <table align="center" border="0.2" style="align-items: center" class="table table-striped">
         <thead style="color:white;background-color:#2e6da4">
         <tr>
-            <th>Блюдо</th>
-            <th>Категория</th>
-            <th>Цена</th>
-            <th>Вес</th>
-            <th>Мера</th>
+            <td>Блюдо</td>
+            <td>Категория</td>
+            <td>Цена</td>
+            <td>Вес</td>
+            <td>Мера</td>
         </tr>
         </thead>
 
@@ -54,4 +54,6 @@
 <br/>
 
 </body>
+<p><a href="/">Go home</a></p>
+
 </html>

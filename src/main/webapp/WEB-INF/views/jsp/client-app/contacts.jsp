@@ -4,21 +4,23 @@
 
 <html>
 <head>
+    <title>Контакты</title>
+
     <div class="container">
         <div class="clearfix">
             <div class="h_left">
                 <center>
-                    <h2>РЕСТОРАН "КРЯ-КРЯ"</h2>
+                    <h2>РЕСТОРАН "ТОчКА"</h2>
                 </center>
                 <a class="h_phone" href="tel:+38099495988">+ 38 099 888 90 09</a>
-                <span class="h_phone-info">Единый телефон ресторана "Кря-Кря"</span>
+                <span class="h_phone-info">Единый телефон ресторана "ТОчКА"</span>
             </div>
             <div class="h_right">
                 <div class="h_lang"><a href="about.html">RU</a> / <a
                         href="http://translate.google.com/translate?sl=ru&tl=en&u=http://rappoport.restaurant/about.html">EN</a>
                 </div>
 
-                <a class="h_email" href="mailto:info@krya-krya.restaurant">info@krya-krya.restaurant</a>
+                <a class="h_email" href="mailto:info@krya-krya.restaurant">info@tochka.restaurant</a>
             </div>
         </div>
         <nav>
